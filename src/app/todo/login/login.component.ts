@@ -1,13 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { httpService } from "../http.service";
-import { User } from "../user";
+import { HttpService } from "../http.service";
+import { DataToLogin } from "../dataToLogin";
+import { Router } from "@angular/router";
+import { DataService } from "../user-data.service";
 
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.css"],
-    providers: [httpService]
+    providers: [HttpService]
 })
 export class LoginComponent implements OnInit {
 
@@ -15,19 +17,26 @@ export class LoginComponent implements OnInit {
         login: [<string | null> "", [Validators.required]],
         password: [<string | null> "", [Validators.required]]
     })
-
+    
     constructor(private fb: FormBuilder,
-                private httpService: httpService) { }
+                private httpService: HttpService,
+                private router: Router,
+                private dataService: DataService) { }
+
 
     public signIn(): void{
 
-        const user: User = {
+        const user: DataToLogin = {
             username: this.loginForm.value.login as string,
             password: this.loginForm.value.password as string
         }
 
         this.httpService.signIn(user).subscribe({
-            next: (data: any) => {console.log(data)},
+            next: (data: object) => {
+                // console.log(Object.entries(data));
+                this.dataService.setUser(Object.entries(data));
+                this.router.navigate(["todo/todos"]);
+            },
             error: () => {
                 this.loginForm.setValue({login: "", password: ""})
                 this.loginForm.markAsUntouched;

@@ -1,0 +1,17 @@
+.main-window{
+    margin: 0 auto;
+    margin-top: 5%;
+    height: 700px;
+    width: 800px;
+    background: #fefefe;
+    border-radius: 15px;
+    box-shadow: 0px 0px 24px 7px rgba(0, 0, 0, 0.2);
+}
+
+.head-container{
+    height: 150px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
+    box-shadow: 0px 11px 14px -10px rgba(0, 0, 0, 0.2);
+}

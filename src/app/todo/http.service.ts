@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { User } from "./user";
+import { DataToLogin } from "./dataToLogin";
 
 
 @Injectable()
-export class httpService{
+export class HttpService{
 
     constructor(private http: HttpClient){}
 
-    public signIn(user: User): any{
+    public signIn(user: DataToLogin): any{
 
         const body = {
             username: user.username,

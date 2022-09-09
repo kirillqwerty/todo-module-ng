@@ -12,14 +12,14 @@
             <span *ngIf="loginForm.get('login')?.errors?.['required']">Field is required</span>
         </div> -->
 
-        <div style="position: absolute; margin-top: 10.5%">
+        <div>
             <span *ngIf="loginForm.get('login')?.errors?.['required']  && loginForm.get('login')?.touched" >Field is required</span>
         </div>
 
         <label class="password-label">Password</label>
         <input type="password" formControlName = "password">  
         
-        <div style="position: absolute; margin-top: 21%">
+        <div>
             <span *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched">Field is required</span>
         </div>
 
@@ -28,4 +28,3 @@
     <button (click)="signIn()">Sign in</button>
 
 </form>
-
