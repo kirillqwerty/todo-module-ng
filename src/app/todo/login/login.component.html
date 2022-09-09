@@ -1,0 +1,18 @@
+<form [formGroup]="loginForm" class="main-form">
+    
+    <div class="label-container">
+        <h1>Login</h1>
+    </div>
+
+    <div class="inputs-container">
+        <label class="user-label">Username</label>
+        <input type="text" formControlName = "login" (error)="loginForm.controls.login.errors?.['required']">
+
+        <label class="password-label">Password</label>
+        <input type="password" formControlName = "password">     
+    </div>
+
+    <button (click)="signIn()">Sign in</button>
+
+</form>
+
