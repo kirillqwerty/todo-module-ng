@@ -35,7 +35,7 @@ h1{
     align-items: center;
 }
 
-input{
+input, .input-error{
     width: 80%;
     height: 35px;
     border-radius: 15px;
@@ -44,6 +44,10 @@ input{
     border: none;
     font-size: 18px;
     margin-top: 10px;
+}
+
+.input-error{
+    border: 3px solid rgb(250, 105, 105);
 }
 
 .user-label, .password-label{
