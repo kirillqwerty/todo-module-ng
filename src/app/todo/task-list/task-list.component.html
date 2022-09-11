@@ -1,5 +1,11 @@
 <div class="main-window">
     <div class="head-container">
-        <label></label>
+        <label class="username-label">{{getUsername()}}</label>
+    </div>
+
+    <div class="main-list">
+        <div *ngFor="let task of this.todos">
+            {{task.todo}}
+        </div>
     </div>
 </div>

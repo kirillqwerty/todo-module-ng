@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Silkscreen:wght@100;400;700&display=swap');
 body{
     font-family: 'Roboto', sans-serif;
+    /* -webkit-text-shadow: 1px 1px 1px #000;
+  -moz-text-shadow: 1px 1px 1px #000;
+      text-shadow: 1px 1px 1px #000; */
     overflow-x: hidden;
     background: linear-gradient(90deg, rgba(255,216,33,1) 0%, rgba(199,115,155,1) 100%);
 }

@@ -4,6 +4,8 @@ import { HttpService } from "../http.service";
 import { DataToLogin } from "../dataToLogin";
 import { Router } from "@angular/router";
 import { DataService } from "../user-data.service";
+import { User } from "../user";
+import { TodoSettings } from "../todoSettings";
 
 @Component({
     selector: "app-login",
@@ -32,9 +34,17 @@ export class LoginComponent implements OnInit {
         }
 
         this.httpService.signIn(user).subscribe({
-            next: (data: object) => {
-                // console.log(Object.entries(data));
-                this.dataService.setUser(Object.entries(data));
+            next: (data: User) => {    
+                // console.log(data);
+                this.dataService.setUser(data);
+                
+                this.httpService.getTodosById(data.id).subscribe({
+                    next: (data: TodoSettings ) => {
+                        // console.log(data);
+                        this.dataService.setTodos(data.todos);
+                    }
+                });
+
                 this.router.navigate(["todo/todos"]);
             },
             error: () => {

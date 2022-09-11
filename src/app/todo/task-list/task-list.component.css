@@ -14,4 +14,22 @@
     border-top-left-radius: 15px;
     background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
     box-shadow: 0px 11px 14px -10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.username-label{
+    font-size: 40px;
+    color: rgba(255,216,33,1);
+    letter-spacing: 1px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease; 
+    -webkit-text-shadow: 2px 2px 2px #000;
+  -moz-text-shadow: 2px 2px 2px #000;
+      text-shadow: 2px 2px 2px #000;
+}
+
+.username-label:hover{
+    color: rgba(199,115,155,1); /* Меняем цвет текста */
 }

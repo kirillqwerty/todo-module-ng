@@ -13,14 +13,14 @@
         </div> -->
 
         <div>
-            <span *ngIf="loginForm.get('login')?.errors?.['required']  && loginForm.get('login')?.touched" >Field is required</span>
+            <span *ngIf="loginForm.get('login')?.errors?.['required']  && loginForm.get('login')?.touched" style="color:#fefefe">Field is required</span>
         </div>
 
         <label class="password-label">Password</label>
         <input type="password" formControlName = "password">  
         
         <div>
-            <span *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched">Field is required</span>
+            <span *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" style="color:#fefefe">Field is required</span>
         </div>
 
     </div>
