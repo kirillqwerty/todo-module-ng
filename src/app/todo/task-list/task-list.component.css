@@ -33,3 +33,28 @@
 .username-label:hover{
     color: rgba(199,115,155,1); /* Меняем цвет текста */
 }
+
+.main-list{
+    height: 550px;
+    background-color: #fefefe;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.todo-line{
+    font-weight: 100;
+    border: 4px solid black;
+    border-radius: 15px;
+    padding-left: 10px;    
+    align-items: center;
+    display: flex;
+    font-size: 25px;
+    height: 10%;
+    width: 95%;
+    margin-top: 10px;
+    background: linear-gradient(90deg, rgba(255, 214, 33, 0.209) 0%, rgba(199, 115, 156, 0.209) 100%);
+}
