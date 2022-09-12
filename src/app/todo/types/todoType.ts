@@ -3,4 +3,5 @@ export type Todo = {
     id: number,
     todo: string,
     userId: number,
+    usermade: boolean
 }

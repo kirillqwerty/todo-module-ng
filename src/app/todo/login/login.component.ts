@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { HttpService } from "../http.service";
+import { HttpService } from "../services/http.service";
 import { DataToLogin } from "../types/dataToLogin";
 import { Router } from "@angular/router";
-import { DataService } from "../user-data.service";
+import { DataStreamService } from "../services/user-data-stream.service";
 import { User } from "../types/user";
 import { TodoSettings } from "../types/todoSettings";
+import { UserDataService } from "../services/user-data.service";
 
 @Component({
     selector: "app-login",
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     constructor(private fb: FormBuilder,
                 private httpService: HttpService,
                 private router: Router,
-                private dataService: DataService) { }
+                private dataStreamService: DataStreamService,
+                private userData: UserDataService) { }
 
 
     public signIn(): void{
@@ -36,16 +38,22 @@ export class LoginComponent implements OnInit {
         this.httpService.signIn(user).subscribe({
             next: (data: User) => {    
                 // console.log(data);
-                this.dataService.setUser(data);
+                this.dataStreamService.setUser(data);
                 
                 this.httpService.getTodosById(data.id).subscribe({
                     next: (data: TodoSettings ) => {
-                        // console.log(data);
-                        this.dataService.setTodos(data.todos);
+                        for (const todo of data.todos) {
+                            todo.usermade = false;
+                        }
+                        this.userData.currentTodos = data.todos;
+                        console.log(this.userData.currentTodos);
                     }
                 });
 
-                this.router.navigate(["todo/todos"]);
+                setTimeout(() => {
+                    this.router.navigate(["todo/todos"]);
+                }, 1000);
+                
             },
             error: () => {
                 this.loginForm.setValue({login: "", password: ""})

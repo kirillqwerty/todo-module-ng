@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { DataToLogin } from "./types/dataToLogin";
+import { DataToLogin } from "../types/dataToLogin";
 
 @Injectable()
 export class HttpService{

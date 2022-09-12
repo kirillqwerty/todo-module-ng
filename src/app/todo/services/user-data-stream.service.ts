@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { ReplaySubject } from "rxjs";
-import { Todo } from "./types/todoType";
-import { User } from "./types/user";
+import { Todo } from "../types/todoType";
+import { User } from "../types/user";
 @Injectable({
     providedIn: "root",
 })
-export class DataService{
-    
+export class DataStreamService{
+
     public currentUser$ = new ReplaySubject<User>(1);
 
     public currentTodos$ = new ReplaySubject<Todo[]>(1);

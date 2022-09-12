@@ -76,6 +76,5 @@ button:hover{
 
 button:active{
     scale: 1.01;
-    transition-duration:0ms;
     opacity: 0.8;
 }

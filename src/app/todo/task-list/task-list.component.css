@@ -92,8 +92,8 @@
 
 .update-todo,  .delete-todo{
     transform: rotateY(180deg);
-    height: 35px;
-    width: 35px;
+    height: 45px;
+    width: 45px;
     font-size: 30px;
 }
 
@@ -104,8 +104,86 @@
     cursor: pointer;
 }
 
+.add-todo:hover{
+    background: linear-gradient(90deg, rgb(224, 163, 124) 0%, rgba(222, 160, 127, 1) 100%);
+}
+
 .add-todo:active, .update-todo:active, .delete-todo:active{
     scale: 1.01;
     transition-duration:0ms;
     opacity: 0.4;
 }
+
+.background{
+    /* backdrop-filter: blur(10px); */
+    pointer-events: none;
+    animation: 0.3s blurScale;
+    filter: blur(5px); 
+}
+
+@keyframes blurScale {
+    from {
+        filter: blur(0px);
+    }
+    to {
+        filter: blur(5px);
+    }
+  }
+
+.delete-message{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    width: 400px;
+    height: 200px;
+    background: #f0f0f0;
+    margin: -100px 0 0 -200px; 
+    border-radius: 15px;
+    box-shadow: 0px 0px 4px 6px rgba(34, 60, 80, 0.18);
+}
+
+.delete-message-head{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    height: 50%;
+    width: 100%;
+    background: #fefefe;
+    /* background: linear-gradient(90deg, rgb(234, 182, 100) 0%, rgba(225, 165, 120, 1) 100%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-message-body{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.yes-btn, .no-btn{
+    font-size: 25px;
+    width: 30%;
+    height: 60%;
+    background: #fefefe;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+
+.yes-btn:hover, .no-btn:hover{
+    background: linear-gradient(90deg, rgb(234, 182, 100) 0%, rgba(225, 165, 120, 1) 100%);
+    scale: 1.05;
+    letter-spacing: 3px;
+    transition-duration: 0.2s;
+}
+
+.yes-btn:active, .yes-btn:active{
+    scale: 1.01;
+    opacity: 0.8;
+}
+
+
+
+
+

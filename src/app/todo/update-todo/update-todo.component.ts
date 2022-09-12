@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { HttpService } from "../http.service";
+import { HttpService } from "../services/http.service";
 import { Todo } from "../types/todoType";
 import { User } from "../types/user";
-import { DataService } from "../user-data.service";
+import { DataStreamService } from "../services/user-data-stream.service";
 
 @Component({
   selector: "app-update-todo",
@@ -20,7 +20,7 @@ export class UpdateTodoComponent implements OnInit {
 
     constructor(private router: Router,
         private httpService: HttpService,
-        private userData: DataService) { }
+        private userData: DataStreamService) { }
 
     public ngOnInit(): void {
         this.taskInput.valueChanges.subscribe(console.log);

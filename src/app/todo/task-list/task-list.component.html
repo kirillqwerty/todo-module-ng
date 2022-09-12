@@ -1,4 +1,4 @@
-<div class="main-window">
+<div class="main-window" [ngClass]="{background: isConfirmation}">
     <div class="head-container">
         <a class="back-arrow" (click)="back()">&larr;</a>
         <label class="head-label">{{getUsername()}}</label>
@@ -9,9 +9,19 @@
         <div *ngFor="let task of this.todos" class="todo-line">
             {{task.todo}}
             <div class="operations-wrapper">
-                <a class="update-todo" (click)="toUpdatePage(task)">&#9998;</a>
-                <a class="delete-todo" style="color: rgb(250, 117, 117);">&#215;</a>
+                <button class="update-todo" [disabled]="task.usermade === true" (click)="toUpdatePage(task)" >&#9998;</button>
+                <button class="delete-todo" [disabled]="task.usermade === true" style="color: rgb(250, 117, 117);" (click)="deleteTodo(task)">&#215;</button>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="delete-message" *ngIf="isConfirmation">
+    <div class="delete-message-head">
+        <label class="head-label">Are you sure?</label>
+    </div>
+    <div class="delete-message-body">
+        <button class="yes-btn">Yes</button>
+        <button class="no-btn" (click)="isConfirmation = false" >No</button>
     </div>
 </div>
