@@ -1,0 +1,92 @@
+.main-window{
+    margin: 0 auto;
+    margin-top: 5%;
+    height: 400px;
+    width: 700px;
+    background: #fefefe;
+    border-radius: 15px;
+    box-shadow: 0px 0px 24px 7px rgba(0, 0, 0, 0.2);
+}
+
+.head-container{
+    height: 100px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-arrow{
+    margin-right: 30%;
+    font-size: 35px;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 46px;
+    width: 46px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background: #fefefe;
+}
+
+.back-arrow:hover{
+    background: linear-gradient(90deg, rgb(241, 193, 88) 0%, rgba(239, 190, 91  , 1) 100%);
+    transition-duration: 0.2s;
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.back-arrow:active{
+    
+    scale: 1.01;
+    opacity: 0.4;
+}
+
+.main-container{
+    height: 200px;
+    background: #fefefe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot-container{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    height: 100px;
+    background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-btn{
+    font-size: 30px;
+    height: 50px;
+    width: 300px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+
+.add-btn:hover{
+    background: linear-gradient(90deg,  rgba(236,184,99,1) 0%, rgba(224,165,120,1) 100%);
+    letter-spacing: 3px;
+    transition-duration: 0.2s;
+}
+
+.add-btn:active{
+    scale: 1.01;
+    transition-duration:0ms;
+    opacity: 0.8;
+}
+
+.todo-input{
+    width: 650px;
+    height: 60px;
+    border-radius: 15px;
+    font-size: 30px;
+    padding-left: 10px;
+}

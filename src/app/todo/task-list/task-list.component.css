@@ -1,7 +1,7 @@
 .main-window{
     margin: 0 auto;
     margin-top: 5%;
-    height: 700px;
+    max-height: 1100px;
     width: 800px;
     background: #fefefe;
     border-radius: 15px;
@@ -13,36 +13,20 @@
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
-    box-shadow: 0px 11px 14px -10px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.username-label{
-    font-size: 40px;
-    color: rgba(255,216,33,1);
-    letter-spacing: 1px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease; 
-    -webkit-text-shadow: 2px 2px 2px #000;
-  -moz-text-shadow: 2px 2px 2px #000;
-      text-shadow: 2px 2px 2px #000;
-}
-
-.username-label:hover{
-    color: rgba(199,115,155,1); /* Меняем цвет текста */
-}
-
 .main-list{
-    height: 550px;
+    padding-bottom: 10px;
+    max-height: 950px;
     background-color: #fefefe;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    
 }
 
 .todo-line{
@@ -53,8 +37,35 @@
     align-items: center;
     display: flex;
     font-size: 25px;
-    height: 10%;
+    height: 50px;
     width: 95%;
     margin-top: 10px;
     background: linear-gradient(90deg, rgba(255, 214, 33, 0.209) 0%, rgba(199, 115, 156, 0.209) 100%);
+}
+
+.add-icon{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 46px;
+    width: 46px;
+    border: 3px solid black;
+    margin-left: 50%;
+    transform: rotateY(180deg);
+    font-size: 40px;
+    border-radius: 15px;
+    background: #fefefe;
+}
+
+.add-icon:hover{
+    background: linear-gradient(90deg, rgb(224, 163, 123) 0%, rgba(222, 160, 125, 1) 100%);
+    transition-duration: 0.2s;
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.add-icon:active{
+    scale: 1.01;
+    transition-duration:0ms;
+    opacity: 0.4;
 }

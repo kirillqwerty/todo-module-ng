@@ -1,0 +1,14 @@
+<div class="main-window">
+    <div class="head-container">
+        <a class="back-arrow" (click)="back()">&larr;</a>
+        <label class="head-label" style="margin-right: 34%;">New task</label>
+    </div>
+
+    <div class="main-container">
+        <input type="text" class="todo-input" [formControl]="taskInput">
+    </div>
+    
+    <div class="foot-container">
+        <button class="add-btn" (click)="addToDo()">Add</button>
+    </div>
+</div>

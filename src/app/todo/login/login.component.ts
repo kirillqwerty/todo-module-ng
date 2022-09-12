@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { HttpService } from "../http.service";
-import { DataToLogin } from "../dataToLogin";
+import { DataToLogin } from "../types/dataToLogin";
 import { Router } from "@angular/router";
 import { DataService } from "../user-data.service";
-import { User } from "../user";
-import { TodoSettings } from "../todoSettings";
+import { User } from "../types/user";
+import { TodoSettings } from "../types/todoSettings";
 
 @Component({
     selector: "app-login",
@@ -53,21 +53,6 @@ export class LoginComponent implements OnInit {
                 alert("try again");
             }
         });
-
-        // fetch("https://dummyjson.com/auth/login", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({
-                
-        //         username: this.loginForm.value.login,
-        //         password: this.loginForm.value.password,
-        //         // expiresInMins: 60, // optional
-        //     })
-        //     })
-        //     .then(res => res.json())
-        //     .then(console.log);
-
-
     }
 
     public ngOnInit(): void {

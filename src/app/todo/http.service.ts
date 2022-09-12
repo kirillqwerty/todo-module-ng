@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { DataToLogin } from "./dataToLogin";
+import { DataToLogin } from "./types/dataToLogin";
 
 @Injectable()
 export class HttpService{
@@ -19,5 +19,16 @@ export class HttpService{
 
     public getTodosById(id: number): any {
         return this.http.get(`https://dummyjson.com/todos/user/${id}`);
+    }
+
+    public addToDo(id: number, task: string): any {
+
+        const body = {
+            todo: task,
+            complted: false,
+            userId: id
+        }
+
+        return this.http.post("https://dummyjson.com/todos/add", body);
     }
 }
