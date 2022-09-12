@@ -25,6 +25,6 @@
 
     </div>
 
-    <button (click)="signIn()">Sign in</button>
+    <button (click)="signIn()" [disabled]="loginForm.value.login === '' || loginForm.value.password === '' " onclick="disabled = true">Sign in</button>
 
 </form>

@@ -21,7 +21,7 @@ export class HttpService{
         return this.http.get(`https://dummyjson.com/todos/user/${id}`);
     }
 
-    public addToDo(id: number, task: string): any {
+    public addTodo(id: number, task: string): any {
 
         const body = {
             todo: task,
@@ -30,5 +30,13 @@ export class HttpService{
         }
 
         return this.http.post("https://dummyjson.com/todos/add", body);
+    }
+    
+    public updateTodo(taskId: number, task: string): any {
+        const body = {
+            todo: task,
+        }
+
+        return this.http.put(`https://dummyjson.com/todos/${taskId}`, body);
     }
 }

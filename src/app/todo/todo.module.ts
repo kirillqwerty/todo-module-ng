@@ -7,6 +7,7 @@ import { LoginComponent } from "./login/login.component";
 import { HttpClientModule } from "@angular/common/http";
 import { TaskListComponent } from "./task-list/task-list.component";
 import { NewTodoComponent } from './new-todo/new-todo.component';
+import { UpdateTodoComponent } from './update-todo/update-todo.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
     LoginComponent,
     TaskListComponent,
     NewTodoComponent,
+    UpdateTodoComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 <div class="main-window">
     <div class="head-container">
-        <a class="back-arrow" (click)="back()">&larr;</a>
-        <label class="head-label" style="margin-right: 34%;">New task</label>
+        <a class="back-arrow" style="margin-left: 3%" (click)="back()">&larr;</a>
+        <label class="head-label" style="margin-left: -6%">Update task</label>
     </div>
 
     <div class="main-container">
@@ -10,6 +10,6 @@
     </div>
     
     <div class="foot-container">
-        <button class="add-btn" (click)="addTodo()" [disabled]="taskInput.value === ''" onclick="disabled = true">Add</button>
+        <button class="add-btn" (click)="update()" [disabled]="taskInput.value === ''" onclick="disabled = true">Update</button>
     </div>
 </div>

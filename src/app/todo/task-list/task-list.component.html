@@ -1,12 +1,17 @@
 <div class="main-window">
     <div class="head-container">
+        <a class="back-arrow" (click)="back()">&larr;</a>
         <label class="head-label">{{getUsername()}}</label>
-        <a class="add-icon" (click)="newTodo()">&#9998;</a>
+        <a class="add-todo" (click)="newTodo()">+</a>
     </div>
 
     <div class="main-list">
         <div *ngFor="let task of this.todos" class="todo-line">
             {{task.todo}}
+            <div class="operations-wrapper">
+                <a class="update-todo" (click)="toUpdatePage(task)">&#9998;</a>
+                <a class="delete-todo" style="color: rgb(250, 117, 117);">&#215;</a>
+            </div>
         </div>
     </div>
 </div>

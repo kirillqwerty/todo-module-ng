@@ -14,8 +14,8 @@
     border-top-left-radius: 15px;
     background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: stretch;
 }
 
 .back-arrow{

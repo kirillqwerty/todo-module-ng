@@ -6,12 +6,16 @@ import { User } from "./types/user";
     providedIn: "root",
 })
 export class DataService{
-
+    
     public currentUser$ = new ReplaySubject<User>(1);
 
     public currentTodos$ = new ReplaySubject<Todo[]>(1);
 
     public newTodo$ = new ReplaySubject<Todo>(1);
+
+    public currentTodo$ = new ReplaySubject<Todo>(1);
+
+    public updatedTodo$ = new ReplaySubject<Todo>(1);
 
     public setUser(user: User): void{
         this.currentUser$.next(user);
@@ -25,4 +29,11 @@ export class DataService{
         this.newTodo$.next(todo);
     }
 
+    public setCurrentTodo(todo: Todo): void {
+        this.currentTodo$.next(todo);
+    }
+
+    public setUpdatedTodo(todo: Todo): void {
+        this.updatedTodo$.next(todo);
+    }
 }

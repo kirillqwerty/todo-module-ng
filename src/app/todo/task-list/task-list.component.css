@@ -8,13 +8,38 @@
     box-shadow: 0px 0px 24px 7px rgba(0, 0, 0, 0.2);
 }
 
+.back-arrow{
+    font-size: 35px;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 46px;
+    width: 46px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background: #fefefe;
+}
+
+.back-arrow:hover{
+    background: linear-gradient(90deg, rgb(241, 193, 88) 0%, rgba(239, 190, 91  , 1) 100%);
+    transition-duration: 0.2s;
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.back-arrow:active{
+    scale: 1.01;
+    opacity: 0.4;
+}
+
 .head-container{
     height: 150px;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -34,6 +59,7 @@
     border: 4px solid black;
     border-radius: 15px;
     padding-left: 10px;    
+    justify-content: space-between;
     align-items: center;
     display: flex;
     font-size: 25px;
@@ -41,30 +67,44 @@
     width: 95%;
     margin-top: 10px;
     background: linear-gradient(90deg, rgba(255, 214, 33, 0.209) 0%, rgba(199, 115, 156, 0.209) 100%);
+    padding-right: 10px;
 }
 
-.add-icon{
+.operations-wrapper{
+    height: 50px;
+    width: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+}
+
+.add-todo, .update-todo, .delete-todo{
     justify-content: center;
     align-items: center;
     display: flex;
     height: 46px;
     width: 46px;
-    border: 3px solid black;
-    margin-left: 50%;
-    transform: rotateY(180deg);
     font-size: 40px;
+    border: 3px solid black;
     border-radius: 15px;
     background: #fefefe;
 }
 
-.add-icon:hover{
-    background: linear-gradient(90deg, rgb(224, 163, 123) 0%, rgba(222, 160, 125, 1) 100%);
+.update-todo,  .delete-todo{
+    transform: rotateY(180deg);
+    height: 35px;
+    width: 35px;
+    font-size: 30px;
+}
+
+.add-todo:hover, .update-todo:hover, .delete-todo:hover{
+    background: linear-gradient(90deg, rgb(243, 227, 232) 0%, rgba(243, 225, 223, 1) 100%);
     transition-duration: 0.2s;
     scale: 1.1;
     cursor: pointer;
 }
 
-.add-icon:active{
+.add-todo:active, .update-todo:active, .delete-todo:active{
     scale: 1.01;
     transition-duration:0ms;
     opacity: 0.4;

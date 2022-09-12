@@ -36,6 +36,7 @@ export class TaskListComponent implements OnInit, OnDestroy{
     private userSub?: Subscription;
     private todosSub?: Subscription;
     private newTodoSub?: Subscription;
+    private updatedTodoSub?: Subscription;
 
     constructor(private userData: DataService,
         private httpService: HttpService,
@@ -46,12 +47,15 @@ export class TaskListComponent implements OnInit, OnDestroy{
     }
 
     public ngOnInit(): void {
+        console.log("not emtpy");
         this.userSub = this.userData.currentUser$.subscribe((data) => {this.user = data; console.log(this.user)});
         this.todosSub = this.userData.currentTodos$.subscribe((data) => {this.todos = data; console.log(this.todos)});
         this.newTodoSub = this.userData.newTodo$.subscribe((data) => {this.todos?.push(data); console.log(this.todos)});
+        this.updatedTodoSub = this.userData.updatedTodo$.subscribe((data) => this.updateTask(data));
     }
 
     public ngOnDestroy(): void {
+        console.log("not emtpy");
         this.userSub?.unsubscribe();
         this.todosSub?.unsubscribe();
         this.newTodoSub?.unsubscribe();
@@ -59,5 +63,23 @@ export class TaskListComponent implements OnInit, OnDestroy{
 
     public newTodo(): void {
         this.router.navigate(["todo/add-todo"]);
+    }
+
+    public toUpdatePage(todo: Todo): void {
+        this.userData.setCurrentTodo(todo);
+        this.router.navigate(["todo/update-todo"]);
+    }
+
+    public back(): void {
+        this.router.navigate(["todo/login"]);
+    }
+
+    public updateTask(todo: Todo): void {
+        console.log(todo);
+        for (const task of this.todos as Todo[]) {
+            if (task.id == todo.id) {
+                task.todo = todo.todo;
+            }
+        }
     }
 }

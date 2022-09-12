@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { HttpService } from "../http.service";
 import { Todo } from "../types/todoType";
@@ -14,7 +14,7 @@ import { DataService } from "../user-data.service";
 })
 export class NewTodoComponent implements OnInit{
 
-    public taskInput = new FormControl("");
+    public taskInput = new FormControl("", [Validators.required]);
     public user?: User;
     public todos?: Todo[];
 
@@ -32,8 +32,8 @@ export class NewTodoComponent implements OnInit{
         this.userData.currentTodos$.subscribe((data) => {this.todos = data; console.log(this.todos)});
     }
 
-    public addToDo(): void{
-        this.httpService.addToDo(this.user?.id as number, this.taskInput.value as string).subscribe({
+    public addTodo(): void{
+        this.httpService.addTodo(this.user?.id as number, this.taskInput.value as string).subscribe({
             next: (data: Todo) => {
                 data.completed = false;
                 console.log("this is form http service")
