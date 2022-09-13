@@ -6,14 +6,13 @@ import { Todo } from "../types/todoType";
 import { User } from "../types/user";
 import { DataStreamService } from "../services/user-data-stream.service";
 import { UserDataService } from "../services/user-data.service";
-import { CanActivateGuard } from "../can-activate.guard";
 
 @Component({
     selector: "app-new-todo",
     templateUrl: "./new-todo.component.html",
-    styleUrls: ["./new-todo.component.css"],
-    providers: [HttpService, CanActivateGuard]
+    styleUrls: ["./new-todo.component.css"]
 })
+
 export class NewTodoComponent implements OnInit{
 
     public taskInput = new FormControl("", [Validators.required]);

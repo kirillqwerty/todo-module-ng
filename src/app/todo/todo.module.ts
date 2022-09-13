@@ -9,6 +9,7 @@ import { TaskListComponent } from "./task-list/task-list.component";
 import { NewTodoComponent } from "./new-todo/new-todo.component";
 import { UpdateTodoComponent } from "./update-todo/update-todo.component";
 import { CanActivateGuard } from "./can-activate.guard";
+import { HttpService } from "./services/http.service";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CanActivateGuard } from "./can-activate.guard";
 
   providers: [
     HttpClientModule,
-    CanActivateGuard
+    CanActivateGuard,
+    HttpService
   ]
 })
 export class TodoModule { }

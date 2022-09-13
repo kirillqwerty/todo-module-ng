@@ -7,14 +7,11 @@ import { Todo } from "../types/todoType";
 import { Subscription } from "rxjs";
 import { UserDataService } from "../services/user-data.service";
 import { FormControl, FormGroup } from "@angular/forms";
-import { CanActivateGuard } from "../can-activate.guard";
-
 
 @Component({
     selector: "app-task-list",
     templateUrl: "./task-list.component.html",
     styleUrls: ["./task-list.component.css"],
-    providers: [HttpService, CanActivateGuard]
 })
 export class TaskListComponent implements OnInit, OnDestroy{
 

@@ -7,14 +7,13 @@ import { DataStreamService } from "../services/user-data-stream.service";
 import { User } from "../types/user";
 import { TodoSettings } from "../types/todoSettings";
 import { UserDataService } from "../services/user-data.service";
-import { CanActivateGuard } from "src/app/todo/can-activate.guard";
 
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.css"],
-    providers: [HttpService]
 })
+
 export class LoginComponent implements OnInit {
 
     public loginForm = this.fb.group({
@@ -26,8 +25,7 @@ export class LoginComponent implements OnInit {
                 private httpService: HttpService,
                 private router: Router,
                 private dataStreamService: DataStreamService,
-                private userData: UserDataService,
-                private authGuard: CanActivateGuard) { }
+                private userData: UserDataService) { }
 
 
     public signIn(): void{
@@ -40,7 +38,6 @@ export class LoginComponent implements OnInit {
         this.httpService.signIn(user).subscribe({
             next: (data: User) => {    
                 // console.log(data);
-                this.authGuard.userLoggedIn = true;
                 this.dataStreamService.setUser(data);
                 
                 this.httpService.getTodosById(data.id).subscribe({

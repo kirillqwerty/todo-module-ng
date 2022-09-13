@@ -5,13 +5,11 @@ import { HttpService } from "../services/http.service";
 import { Todo } from "../types/todoType";
 import { User } from "../types/user";
 import { DataStreamService } from "../services/user-data-stream.service";
-import { CanActivateGuard } from "../can-activate.guard";
 
 @Component({
   selector: "app-update-todo",
   templateUrl: "./update-todo.component.html",
-  styleUrls: ["./update-todo.component.css"],
-  providers: [HttpService, CanActivateGuard]
+  styleUrls: ["./update-todo.component.css"]
 })
 export class UpdateTodoComponent implements OnInit {
 
