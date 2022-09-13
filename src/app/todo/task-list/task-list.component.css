@@ -97,6 +97,10 @@
     font-size: 30px;
 }
 
+.update-todo:disabled,  .delete-todo:disabled{
+    opacity: 0.4;
+}
+
 .add-todo:hover, .update-todo:hover, .delete-todo:hover{
     background: linear-gradient(90deg, rgb(243, 227, 232) 0%, rgba(243, 225, 223, 1) 100%);
     transition-duration: 0.2s;
@@ -178,7 +182,7 @@
     transition-duration: 0.2s;
 }
 
-.yes-btn:active, .yes-btn:active{
+.yes-btn:active, .no-btn:active{
     scale: 1.01;
     opacity: 0.8;
 }

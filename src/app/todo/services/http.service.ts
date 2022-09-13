@@ -39,4 +39,8 @@ export class HttpService{
 
         return this.http.put(`https://dummyjson.com/todos/${taskId}`, body);
     }
+
+    public deleteTodo(taskId: number): any{
+        return this.http.delete(`https://dummyjson.com/todos/${taskId}`);
+    }
 }

@@ -6,8 +6,9 @@ import { TodoComponent } from "./todo.component";
 import { LoginComponent } from "./login/login.component";
 import { HttpClientModule } from "@angular/common/http";
 import { TaskListComponent } from "./task-list/task-list.component";
-import { NewTodoComponent } from './new-todo/new-todo.component';
-import { UpdateTodoComponent } from './update-todo/update-todo.component';
+import { NewTodoComponent } from "./new-todo/new-todo.component";
+import { UpdateTodoComponent } from "./update-todo/update-todo.component";
+import { CanActivateGuard } from "./can-activate.guard";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UpdateTodoComponent } from './update-todo/update-todo.component';
   ],
 
   providers: [
-    HttpClientModule
+    HttpClientModule,
+    CanActivateGuard
   ]
 })
 export class TodoModule { }

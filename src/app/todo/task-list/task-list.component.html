@@ -10,18 +10,18 @@
             {{task.todo}}
             <div class="operations-wrapper">
                 <button class="update-todo" [disabled]="task.usermade === true" (click)="toUpdatePage(task)" >&#9998;</button>
-                <button class="delete-todo" [disabled]="task.usermade === true" style="color: rgb(250, 117, 117);" (click)="deleteTodo(task)">&#215;</button>
+                <button class="delete-todo" [disabled]="task.usermade === true" style="color: rgb(250, 117, 117);" (click)="setTaskToDelete(task)">&#215;</button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="delete-message" *ngIf="isConfirmation">
+<div class="delete-message" [hidden]="!isConfirmation" [formGroup]="confirmationForm">
     <div class="delete-message-head">
         <label class="head-label">Are you sure?</label>
     </div>
     <div class="delete-message-body">
-        <button class="yes-btn">Yes</button>
-        <button class="no-btn" (click)="isConfirmation = false" >No</button>
+        <button class="yes-btn"  (click)="confirmationForm.setValue({yesBtn: true}); isConfirmation = false">Yes</button>
+        <button class="no-btn" (click)="confirmationForm.setValue({yesBtn: false}); isConfirmation = false">No</button>
     </div>
 </div>
