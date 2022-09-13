@@ -4,8 +4,6 @@ import { HttpService } from "../services/http.service";
 import { DataToLogin } from "../types/dataToLogin";
 import { Router } from "@angular/router";
 import { DataStreamService } from "../services/user-data-stream.service";
-import { User } from "../types/user";
-import { TodoSettings } from "../types/todoSettings";
 import { UserDataService } from "../services/user-data.service";
 
 @Component({
@@ -28,6 +26,7 @@ export class LoginComponent implements OnInit {
                 private userData: UserDataService) { }
 
 
+
     public signIn(): void{
 
         const user: DataToLogin = {
@@ -36,12 +35,12 @@ export class LoginComponent implements OnInit {
         }
 
         this.httpService.signIn(user).subscribe({
-            next: (data: User) => {    
+            next: (data) => {    
                 // console.log(data);
                 this.dataStreamService.setUser(data);
                 
                 this.httpService.getTodosById(data.id).subscribe({
-                    next: (data: TodoSettings ) => {
+                    next: (data) => {
                         for (const todo of data.todos) {
                             todo.usermade = false;
                         }

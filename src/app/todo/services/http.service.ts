@@ -1,29 +1,31 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DataToLogin } from "../types/dataToLogin";
+import { Observable } from "rxjs";
+import { User } from "../types/user";
+import { Todo } from "../types/todoType";
+import { TodoSettings } from "../types/todoSettings";
 
-@Injectable({
-    providedIn: "root",
-})
+@Injectable()
 export class HttpService{
 
     constructor(private http: HttpClient){}
 
-    public signIn(user: DataToLogin): any {
+    public signIn(user: DataToLogin): Observable<User> {
 
         const body = {
             username: user.username,
             password: user.password
         };
 
-        return this.http.post("https://dummyjson.com/auth/login", body);
+        return this.http.post<User>("https://dummyjson.com/auth/login", body);
     }
 
-    public getTodosById(id: number): any {
-        return this.http.get(`https://dummyjson.com/todos/user/${id}`);
+    public getTodosById(id: number): Observable<TodoSettings> {
+        return this.http.get<TodoSettings>(`https://dummyjson.com/todos/user/${id}`);
     }
 
-    public addTodo(id: number, task: string): any {
+    public addTodo(id: number, task: string): Observable<Todo> {
 
         const body = {
             todo: task,
@@ -31,18 +33,18 @@ export class HttpService{
             userId: id
         }
 
-        return this.http.post("https://dummyjson.com/todos/add", body);
+        return this.http.post<Todo>("https://dummyjson.com/todos/add", body);
     }
     
-    public updateTodo(taskId: number, task: string): any {
+    public updateTodo(taskId: number, task: string): Observable<Todo> {
         const body = {
             todo: task,
         }
 
-        return this.http.put(`https://dummyjson.com/todos/${taskId}`, body);
+        return this.http.put<Todo>(`https://dummyjson.com/todos/${taskId}`, body);
     }
 
-    public deleteTodo(taskId: number): any{
-        return this.http.delete(`https://dummyjson.com/todos/${taskId}`);
+    public deleteTodo(taskId: number): Observable<Todo>{
+        return this.http.delete<Todo>(`https://dummyjson.com/todos/${taskId}`);
     }
 }

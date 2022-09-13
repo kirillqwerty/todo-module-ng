@@ -61,6 +61,7 @@ export class TaskListComponent implements OnInit, OnDestroy{
         this.confirmationForm.valueChanges.subscribe(() => this.deleteTodo());
         this.updatedTodoSub = this.userDataStream.updatedTodo$.subscribe((data) => this.updateTask(data));  
         console.log(this.isConfirmation);
+        
     }
 
     public ngOnDestroy(): void {
@@ -99,9 +100,9 @@ export class TaskListComponent implements OnInit, OnDestroy{
     public deleteTodo(): void {
         // this.isConfirmation = true;
         if (this.confirmationForm.value.yesBtn) {
-            if (this.taskToDelete!== undefined){
+            if (this.taskToDelete !== undefined){
                 this.httpService.deleteTodo(this.taskToDelete.id).subscribe({
-                    next: (data: any) => { 
+                    next: (data) => { 
                         console.log(data);
                         if (this.taskToDelete!== undefined){
                         this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
