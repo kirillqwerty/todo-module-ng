@@ -6,7 +6,6 @@ import { User } from "../types/user";
 import { Todo } from "../types/todoType";
 import { Subscription } from "rxjs";
 import { UserDataService } from "../services/user-data.service";
-import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
     selector: "app-task-list",
@@ -35,11 +34,6 @@ export class TaskListComponent implements OnInit, OnDestroy{
 
     public taskToDelete?: Todo;
 
-    public confirmationForm = new FormGroup({
-        yesBtn: new FormControl(false)
-    }) 
-        
-
     public isConfirmation = false;
     private userSub?: Subscription;
     private updatedTodoSub?: Subscription;
@@ -58,7 +52,6 @@ export class TaskListComponent implements OnInit, OnDestroy{
         this.userSub = this.userDataStream.currentUser$.subscribe((data) => {this.user = data; console.log(this.user)});
         this.todos = this.dataService.currentTodos;
         console.log(this.todos);
-        this.confirmationForm.valueChanges.subscribe(() => this.deleteTodo());
         this.updatedTodoSub = this.userDataStream.updatedTodo$.subscribe((data) => this.updateTask(data));  
         console.log(this.isConfirmation);
         
@@ -99,20 +92,16 @@ export class TaskListComponent implements OnInit, OnDestroy{
 
     public deleteTodo(): void {
         // this.isConfirmation = true;
-        if (this.confirmationForm.value.yesBtn) {
-            if (this.taskToDelete !== undefined){
-                this.httpService.deleteTodo(this.taskToDelete.id).subscribe({
-                    next: (data) => { 
+        if (this.taskToDelete?.id !== undefined) {
+            this.httpService.deleteTodo(this.taskToDelete?.id).subscribe({
+                next: (data) => {
+                    if (this.taskToDelete !== undefined) {
                         console.log(data);
-                        if (this.taskToDelete!== undefined){
-                        this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
-                        // setTimeout(() => {
-                        //     this.confirmationForm.setValue({yesBtn: false});
-                        // }, 1000); 
-                        }
+                        this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)    
                     }
-                })
-            }
+                }
+            })    
         }
+        this.isConfirmation = false;
     }
 }

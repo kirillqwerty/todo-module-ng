@@ -27,8 +27,8 @@ export class UpdateTodoComponent implements OnInit, OnDestroy {
     
     public ngOnInit(): void {
         this.taskInput.valueChanges.subscribe(console.log);
-        this.userData.currentUser$.subscribe((data) => {this.user = data; console.log(this.user)});
-        this.userData.currentTodo$.subscribe((data) => {this.todo = data; console.log(this.todo)});
+        this.userSub = this.userData.currentUser$.subscribe((data) => {this.user = data; console.log(this.user)});
+        this.todoSub = this.userData.currentTodo$.subscribe((data) => {this.todo = data; console.log(this.todo)});
         this.taskInput.setValue(this.todo?.todo as string); 
     }
 

@@ -16,12 +16,12 @@
     </div>
 </div>
 
-<div class="delete-message" [hidden]="!isConfirmation" [formGroup]="confirmationForm">
+<div class="delete-message" [hidden]="!isConfirmation">
     <div class="delete-message-head">
         <label class="head-label">Are you sure?</label>
     </div>
     <div class="delete-message-body">
-        <button class="yes-btn"  (click)="confirmationForm.setValue({yesBtn: true}); isConfirmation = false">Yes</button>
-        <button class="no-btn" (click)="confirmationForm.setValue({yesBtn: false}); isConfirmation = false">No</button>
+        <button class="yes-btn" (click)="deleteTodo()">Yes</button>
+        <button class="no-btn" (click)="isConfirmation = false">No</button>
     </div>
 </div>
