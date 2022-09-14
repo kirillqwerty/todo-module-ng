@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { HttpService } from "../services/http.service";
@@ -11,7 +11,8 @@ import { Subscription } from "rxjs";
 @Component({
     selector: "app-new-todo",
     templateUrl: "./new-todo.component.html",
-    styleUrls: ["./new-todo.component.css"]
+    styleUrls: ["./new-todo.component.css"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class NewTodoComponent implements OnInit, OnDestroy{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { HttpService } from "../services/http.service";
 import { DataToLogin } from "../types/dataToLogin";
@@ -10,6 +10,7 @@ import { UserDataService } from "../services/user-data.service";
     selector: "app-login",
     templateUrl: "./login.component.html",
     styleUrls: ["./login.component.css"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class LoginComponent implements OnInit {
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
             next: (data) => {    
                 // console.log(data);
                 this.dataStreamService.setUser(data);
-                
+                this.userData.isAuth = true;
                 this.httpService.getTodosById(data.id).subscribe({
                     next: (data) => {
                         for (const todo of data.todos) {

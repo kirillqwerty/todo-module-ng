@@ -10,7 +10,8 @@ import { NewTodoComponent } from "./new-todo/new-todo.component";
 import { UpdateTodoComponent } from "./update-todo/update-todo.component";
 import { CanActivateGuard } from "./can-activate.guard";
 import { HttpService } from "./services/http.service";
-
+import { UserDataService } from "./services/user-data.service";
+import { DataStreamService } from "./services/user-data-stream.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { HttpService } from "./services/http.service";
   providers: [
     HttpClientModule,
     CanActivateGuard,
-    HttpService
+    HttpService,
+    UserDataService,
+    DataStreamService
   ]
 })
 export class TodoModule { }

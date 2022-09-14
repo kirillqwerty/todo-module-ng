@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
 import { DataStreamService } from "../services/user-data-stream.service";
 import { HttpService } from "../services/http.service";
 import { Router } from "@angular/router";
@@ -11,6 +11,7 @@ import { UserDataService } from "../services/user-data.service";
     selector: "app-task-list",
     templateUrl: "./task-list.component.html",
     styleUrls: ["./task-list.component.css"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskListComponent implements OnInit, OnDestroy{
 
@@ -41,8 +42,9 @@ export class TaskListComponent implements OnInit, OnDestroy{
     constructor(private userDataStream: DataStreamService,
         private httpService: HttpService,
         private router: Router,
-        private dataService: UserDataService) { }
-
+        private dataService: UserDataService,
+        private cdr: ChangeDetectorRef) { }
+        
     public getUsername(): string{
         return this.user?.username as string;
     }
@@ -54,7 +56,7 @@ export class TaskListComponent implements OnInit, OnDestroy{
         console.log(this.todos);
         this.updatedTodoSub = this.userDataStream.updatedTodo$.subscribe((data) => this.updateTask(data));  
         console.log(this.isConfirmation);
-        
+        this.cdr.detectChanges();
     }
 
     public ngOnDestroy(): void {
@@ -97,7 +99,8 @@ export class TaskListComponent implements OnInit, OnDestroy{
                 next: (data) => {
                     if (this.taskToDelete !== undefined) {
                         console.log(data);
-                        this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)    
+                        this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
+                        this.cdr.detectChanges();    
                     }
                 }
             })    
