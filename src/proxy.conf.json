@@ -1,0 +1,11 @@
+{
+    "/api/": {
+        "target": "https://dummyjson.com/",
+        "secure": false,
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

@@ -19,12 +19,16 @@ export class AuthInterceptor implements HttpInterceptor {
     }
   
     private addAuthToken(request: HttpRequest<any>): HttpRequest<any> {
-        const token = this.authService.getToken();
+        const token = this.authService.Token;
     
-        return request.clone({
-            setHeaders: {
-                Authorization: `Basic ${token}`
-            }
-        })
+        if(request.withCredentials){   
+            return request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        }
+        return request;
+        
     }
 }

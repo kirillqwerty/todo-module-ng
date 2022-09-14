@@ -13,7 +13,6 @@ import { HttpService } from "./services/http.service";
 import { UserDataService } from "./services/user-data.service";
 import { DataStreamService } from "./services/user-data-stream.service";
 import { AuthService } from "./services/auth-service.service";
-// import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { AuthInterceptor } from "./services/auth-interceptor.interceptor";
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { AuthInterceptor } from "./services/auth-interceptor.interceptor";
     TodoRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // JwtModule
   ],
 
   providers: [
@@ -37,8 +35,6 @@ import { AuthInterceptor } from "./services/auth-interceptor.interceptor";
     HttpService,
     UserDataService,
     DataStreamService,
-    // { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    // JwtHelperService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     AuthService
   ]

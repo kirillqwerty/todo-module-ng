@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { DataToLogin } from "../types/dataToLogin";
 import { Observable } from "rxjs";
 import { User } from "../types/user";
@@ -23,18 +23,8 @@ export class HttpService{
         return this.http.post<User>("https://dummyjson.com/auth/login", body);
     }
 
-    public getTodosById(id: number): Observable<TodoSettings> {
-
-        // const headers = new HttpHeaders({
-        //     "Content-Type": "application/json",
-        //     "Authorization": `Bearer ${this.authService.getToken()}`
-        // })
-
-        // const requestOptions = { 
-        //     headers: headers 
-        // };
-        
-        return this.http.get<TodoSettings>(`https://dummyjson.com/todos/user/${id}`);
+    public getTodosById(id: number): Observable<TodoSettings> {     
+        return this.http.get<TodoSettings>(`api/auth/todos/user/${id}`, { withCredentials: true });
     }
 
     public addTodo(id: number, task: string): Observable<Todo> {
@@ -44,18 +34,7 @@ export class HttpService{
             complted: false,
             userId: id
         }
-
-        // const headers = new HttpHeaders({
-        //     "Content-Type": "application/json",
-        //     "Authorization": `Bearer ${this.authService.getToken()}`
-        // })
-
-        // const requestOptions = { 
-        //     headers: headers, 
-        //     body: body
-        // };
-
-        return this.http.post<Todo>("https://dummyjson.com/todos/add", body);
+        return this.http.post<Todo>("api/todos/add", body, { withCredentials: true });
     }
 
     public updateTodo(taskId: number, task: string): Observable<Todo> {
@@ -64,29 +43,10 @@ export class HttpService{
             todo: task,
         }
 
-        // const headers = new HttpHeaders({
-        //     "Content-Type": "application/json",
-        //     "Authorization": `Bearer ${this.authService.getToken()}`
-        // })
-
-        // const requestOptions = { 
-        //     headers: headers, 
-        //     body: body
-        // };
-
-        return this.http.put<Todo>(`https://dummyjson.com/todos/${taskId}`, body);
+        return this.http.put<Todo>(`api/todos/${taskId}`, body, { withCredentials: true });
     }
 
     public deleteTodo(taskId: number): Observable<Todo>{
-        // const headers = new HttpHeaders({
-        //     "Content-Type": "application/json",
-        //     "Authorization": `Bearer ${this.authService.getToken()}`
-        // })
-
-        // const requestOptions = { 
-        //     headers: headers 
-        // };
-
-        return this.http.delete<Todo>(`https://dummyjson.com/todos/${taskId}`);
+        return this.http.delete<Todo>(`api/todos/${taskId}`, { withCredentials: true });
     }
 }

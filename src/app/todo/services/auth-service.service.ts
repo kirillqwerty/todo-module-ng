@@ -3,16 +3,16 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthService {
     
-    public token = "";
+    private token = "";
 
     // constructor() {
     // }
 
-    public getToken(): string {
+    public get Token(): string {
         return this.token;
     }
 
-    public setToken(token: string): void {
+    public set Token(token: string){
         this.token = token;
     }
 }
