@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             next: (data) => {    
                 console.log(data);
                 this.dataStreamService.setUser(data);
-                this.authService.Token = data.token;
+                this.authService.token = data.token;
                 this.httpService.getTodosById(data.id).subscribe({
                     next: (data) => {
                         for (const todo of data.todos) {

@@ -12,7 +12,7 @@ export class CanActivateGuard implements CanActivate {
         public authService: AuthService){}
 
     public canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.authService.Token) {
+        if (this.authService.token) {
             return true;    
         }
         this.router.navigate(["todo/login"])

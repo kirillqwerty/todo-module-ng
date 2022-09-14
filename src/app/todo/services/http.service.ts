@@ -20,7 +20,7 @@ export class HttpService{
             password: user.password
         };
 
-        return this.http.post<User>("https://dummyjson.com/auth/login", body);
+        return this.http.post<User>("api/auth/login", body);
     }
 
     public getTodosById(id: number): Observable<TodoSettings> {     
