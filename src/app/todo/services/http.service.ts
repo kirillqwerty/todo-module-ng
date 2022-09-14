@@ -34,7 +34,7 @@ export class HttpService{
             complted: false,
             userId: id
         }
-        return this.http.post<Todo>("api/todos/add", body, { withCredentials: true });
+        return this.http.post<Todo>("api/auth/todos/add", body, { withCredentials: true });
     }
 
     public updateTodo(taskId: number, task: string): Observable<Todo> {
@@ -43,10 +43,10 @@ export class HttpService{
             todo: task,
         }
 
-        return this.http.put<Todo>(`api/todos/${taskId}`, body, { withCredentials: true });
+        return this.http.put<Todo>(`api/auth/todos/${taskId}`, body, { withCredentials: true });
     }
 
     public deleteTodo(taskId: number): Observable<Todo>{
-        return this.http.delete<Todo>(`api/todos/${taskId}`, { withCredentials: true });
+        return this.http.delete<Todo>(`api/auth/todos/${taskId}`, { withCredentials: true });
     }
 }
