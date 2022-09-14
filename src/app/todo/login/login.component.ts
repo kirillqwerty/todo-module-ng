@@ -5,6 +5,7 @@ import { DataToLogin } from "../types/dataToLogin";
 import { Router } from "@angular/router";
 import { DataStreamService } from "../services/user-data-stream.service";
 import { UserDataService } from "../services/user-data.service";
+import { AuthService } from "../services/auth-service.service";
 
 @Component({
     selector: "app-login",
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
                 private httpService: HttpService,
                 private router: Router,
                 private dataStreamService: DataStreamService,
-                private userData: UserDataService) { }
+                private userData: UserDataService,
+                private authService: AuthService) { }
 
 
 
@@ -37,9 +39,9 @@ export class LoginComponent implements OnInit {
 
         this.httpService.signIn(user).subscribe({
             next: (data) => {    
-                // console.log(data);
+                console.log(data);
                 this.dataStreamService.setUser(data);
-                this.userData.isAuth = true;
+                this.authService.setToken(data.token);
                 this.httpService.getTodosById(data.id).subscribe({
                     next: (data) => {
                         for (const todo of data.todos) {
@@ -65,7 +67,6 @@ export class LoginComponent implements OnInit {
 
     public ngOnInit(): void {
         this.loginForm.valueChanges.subscribe(console.log);    
-
     }
 
     

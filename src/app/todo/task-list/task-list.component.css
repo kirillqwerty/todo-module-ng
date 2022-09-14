@@ -90,8 +90,16 @@
     background: #fefefe;
 }
 
-.update-todo,  .delete-todo{
+.update-todo{
     transform: rotateY(180deg);
+    height: 45px;
+    width: 45px;
+    font-size: 30px;
+    padding-bottom: 1%;
+}
+
+.delete-todo{
+    color: rgb(240, 130, 130);
     height: 45px;
     width: 45px;
     font-size: 30px;

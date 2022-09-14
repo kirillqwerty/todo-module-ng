@@ -8,8 +8,6 @@ export class UserDataService{
 
     public currentTodos?: Todo[];
 
-    public isAuth = false;
-
     constructor(public dataStreamService: DataStreamService){
 
     }
