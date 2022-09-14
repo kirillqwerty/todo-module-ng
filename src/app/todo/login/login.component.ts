@@ -49,17 +49,13 @@ export class LoginComponent implements OnInit {
                         }
                         this.userData.currentTodos = data.todos;
                         console.log(this.userData.currentTodos);
+                        this.router.navigate(["todo/todos"]);
                     }
                 });
-
-                setTimeout(() => {
-                    this.router.navigate(["todo/todos"]);
-                }, 1000);
                 
             },
             error: () => {
-                this.loginForm.setValue({login: "", password: ""})
-                this.loginForm.markAsUntouched;
+                this.loginForm.setValue({login: "", password: ""});                
                 alert("try again");
             }
         });

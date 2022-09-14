@@ -10,7 +10,7 @@
             {{task.todo}}
             <div class="operations-wrapper">
                 <button class="update-todo" [disabled]="task.usermade === true" (click)="toUpdatePage(task)" >&#9998;</button>
-                <button class="delete-todo" [disabled]="task.usermade === true" style="color: rgb(250, 117, 117);" (click)="setTaskToDelete(task)">&#215;</button>
+                <button class="delete-todo" [disabled]="task.usermade === true" (click)="setTaskToDelete(task)">&#215;</button>
             </div>
         </div>
     </div>
