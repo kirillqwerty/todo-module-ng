@@ -10,6 +10,6 @@
     </div>
     
     <div class="foot-container">
-        <button class="add-btn" (click)="changeTodos()" [disabled]="taskInput.value === '' || taskInput.value === null || !btnAllow" >{{buttonText}}</button>
+        <button class="add-btn" (click)="changeTodos()" [disabled]="!taskInput.value || !btnAllow" >{{buttonText}}</button>
     </div>
 </div>

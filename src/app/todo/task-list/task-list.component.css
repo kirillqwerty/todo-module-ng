@@ -1,11 +1,34 @@
 .main-window{
     margin: 0 auto;
-    margin-top: 5%;
-    max-height: 1100px;
+    max-height: 1300px;
     width: 800px;
     background: #fefefe;
     border-radius: 15px;
     box-shadow: 0px 0px 24px 7px rgba(0, 0, 0, 0.2);
+}
+
+.head-container{
+    height: 150px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    /* background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%); */
+    background: #e6ae6e;
+    /* background: qweqwe; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+  .main-list{
+    padding-bottom: 10px;
+    max-height: 950px;
+    background-color: #fefefe;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 4px solid black;
 }
 
 .back-arrow{
@@ -22,7 +45,9 @@
 }
 
 .back-arrow:hover{
-    background: linear-gradient(90deg, rgb(241, 193, 88) 0%, rgba(239, 190, 91  , 1) 100%);
+    /* background: #e6ae6e; */
+    background: linear-gradient(90deg, rgba(254, 245, 208) 0%, rgba(243, 225, 234) 100%);
+
     transition-duration: 0.2s;
     scale: 1.1;
     cursor: pointer;
@@ -31,27 +56,6 @@
 .back-arrow:active{
     scale: 1.01;
     opacity: 0.4;
-}
-
-.head-container{
-    height: 150px;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    background: linear-gradient(90deg, rgb(241, 194, 87) 0%, rgb(219, 155, 132) 100%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.main-list{
-    padding-bottom: 10px;
-    max-height: 950px;
-    background-color: #fefefe;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
 }
 
 .todo-line{
@@ -117,7 +121,9 @@
 }
 
 .add-todo:hover{
-    background: linear-gradient(90deg, rgb(224, 163, 124) 0%, rgba(222, 160, 127, 1) 100%);
+    background: linear-gradient(90deg, rgba(254, 245, 208) 0%, rgba(243, 225, 234) 100%);
+
+    /* background: linear-gradient(90deg, rgb(224, 163, 124) 0%, rgba(222, 160, 127, 1) 100%); */
 }
 
 .add-todo:active, .update-todo:active, .delete-todo:active{

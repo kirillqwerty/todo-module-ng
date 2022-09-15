@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ReplaySubject } from "rxjs";
+import { FullUserInfo } from "../types/fullUserInfo";
 import { Todo } from "../types/todoType";
 import { User } from "../types/user";
 
@@ -18,11 +19,13 @@ export class DataStreamService{
 
     public isUpdatingMode$ = new ReplaySubject<boolean>(1);
 
-    public setUser(user: User): void{
+    public allUsers$ = new ReplaySubject<FullUserInfo[]>(1);
+
+    public setUser(user: User): void {
         this.currentUser$.next(user);
     }
 
-    public setTodos(todos: Todo[]): void{
+    public setTodos(todos: Todo[]): void {
         this.currentTodos$.next(todos);
     }
 
@@ -40,5 +43,9 @@ export class DataStreamService{
 
     public setUpdatingMode(value: boolean): void {
         this.isUpdatingMode$.next(value);
+    }
+
+    public setAllUsers(users: FullUserInfo[]): void {
+        this.allUsers$.next(users);
     }
 }

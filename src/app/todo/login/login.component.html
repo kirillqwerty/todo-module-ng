@@ -8,10 +8,6 @@
         <label class="user-label">Username</label>
         <input type="text" formControlName = "login"/>
 
-        <!-- <div style="position: absolute; margin-top: 10.5%" *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched">
-            <span *ngIf="loginForm.get('login')?.errors?.['required']">Field is required</span>
-        </div> -->
-
         <div>
             <span *ngIf="loginForm.get('login')?.errors?.['required']  && loginForm.get('login')?.touched" style="color:#fefefe">Field is required</span>
         </div>
@@ -25,6 +21,6 @@
 
     </div>
 
-    <button (click)="signIn()" [disabled]="loginForm.value.login === '' || loginForm.value.password === '' " onclick="disabled = true">Sign in</button>
+    <button (click)="signIn()" [disabled]="!loginForm.value.login || !loginForm.value.password " onclick="disabled = true">Sign in</button>
 
 </form>
