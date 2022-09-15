@@ -112,6 +112,13 @@ export class TaskListComponent implements OnInit, OnDestroy{
                             this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
                             this.cdr.detectChanges();    
                         }
+                    },
+                    error: () => {
+                        console.log("error");
+                        if (this.dataService.currentTodos !== undefined && this.taskToDelete !== undefined){
+                            this.dataService.currentTodos[this.dataService.currentTodos.indexOf(this.taskToDelete)].usermade = false;
+                        }
+                        this.cdr.detectChanges();
                     }
                 })    
         }
