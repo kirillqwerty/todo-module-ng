@@ -1,7 +1,7 @@
 <div class="main-window">
     <a class="back-arrow" (click)="back()">&larr;</a>   
     <div class="head-container">
-        <label class="head-label" >{{headerLabelText}}</label>
+        <label class="head-label">{{headerLabelText}}</label>
     </div>
 
     <div class="main-container">
@@ -10,7 +10,6 @@
     </div>
     
     <div class="foot-container">
-        <button class="add-btn" (click)="changeTodos()" [disabled]="taskInput.value === ''" [disabled]="!btnAllow">{{buttonText}}</button>
+        <button class="add-btn" (click)="changeTodos()" [disabled]="taskInput.value === '' || taskInput.value === null || !btnAllow" >{{buttonText}}</button>
     </div>
 </div>
-<!-- style="margin-right: 34%;" -->

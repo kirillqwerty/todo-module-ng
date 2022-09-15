@@ -5,13 +5,11 @@ import { Observable } from "rxjs";
 import { User } from "../types/user";
 import { Todo } from "../types/todoType";
 import { TodoSettings } from "../types/todoSettings";
-import { AuthService } from "./auth-service.service";
 
 @Injectable()
 export class HttpService{
 
-    constructor(private http: HttpClient,
-                private authService: AuthService){}
+    constructor(private http: HttpClient,){}
 
     public signIn(user: DataToLogin): Observable<User> {
 

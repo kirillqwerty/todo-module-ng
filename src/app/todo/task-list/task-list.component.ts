@@ -4,7 +4,7 @@ import { HttpService } from "../services/http.service";
 import { Router } from "@angular/router";
 import { User } from "../types/user";
 import { Todo } from "../types/todoType";
-import { Subscription } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { UserDataService } from "../services/user-data.service";
 
 @Component({
@@ -36,8 +36,8 @@ export class TaskListComponent implements OnInit, OnDestroy{
     public taskToDelete?: Todo;
 
     public isConfirmation = false;
-    private userSub?: Subscription;
-    private updatedTodoSub?: Subscription;
+
+    private readonly unsubscribe$: Subject<void> = new Subject();
 
     constructor(private userDataStream: DataStreamService,
         private httpService: HttpService,
@@ -51,18 +51,21 @@ export class TaskListComponent implements OnInit, OnDestroy{
 
     public ngOnInit(): void {
         console.log(this.isConfirmation);
-        this.userSub = this.userDataStream.currentUser$.subscribe((data) => {this.user = data; console.log(this.user)});
+
+        this.userDataStream.currentUser$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((data) => {this.user = data; console.log(this.user)});
+
         this.todos = this.dataService.currentTodos;
+
         console.log(this.todos);
-        this.updatedTodoSub = this.userDataStream.updatedTodo$.subscribe((data) => this.updateTask(data));  
+
+        this.userDataStream.updatedTodo$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((data) => this.updateTask(data));  
+
         console.log(this.isConfirmation);
         this.cdr.detectChanges();
-    }
-
-    public ngOnDestroy(): void {
-        console.log("not emtpy");
-        this.userSub?.unsubscribe();
-        this.updatedTodoSub?.unsubscribe();
     }
 
     public newTodo(): void {
@@ -95,18 +98,29 @@ export class TaskListComponent implements OnInit, OnDestroy{
     }
 
     public deleteTodo(): void {
+        if (this.dataService.currentTodos !== undefined && this.taskToDelete !== undefined){
+            this.dataService.currentTodos[this.dataService.currentTodos.indexOf(this.taskToDelete)].usermade = true;
+        }
         // this.isConfirmation = true;
         if (this.taskToDelete?.id !== undefined) {
-            this.httpService.deleteTodo(this.taskToDelete?.id).subscribe({
-                next: (data) => {
-                    if (this.taskToDelete !== undefined) {
-                        console.log(data);
-                        this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
-                        this.cdr.detectChanges();    
+            this.httpService.deleteTodo(this.taskToDelete?.id)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next: (data) => {
+                        if (this.taskToDelete !== undefined) {
+                            console.log(data);
+                            this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
+                            this.cdr.detectChanges();    
+                        }
                     }
-                }
-            })    
+                })    
         }
         this.isConfirmation = false;
+    }
+
+    public ngOnDestroy(): void {
+        console.log("not emtpy");
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }
