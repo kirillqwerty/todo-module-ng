@@ -6,8 +6,7 @@ import { TodoComponent } from "./todo.component";
 import { LoginComponent } from "./login/login.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TaskListComponent } from "./task-list/task-list.component";
-import { NewTodoComponent } from "./new-todo/new-todo.component";
-import { UpdateTodoComponent } from "./update-todo/update-todo.component";
+import { ChangeTodoComponent } from "./change-todo/change-todo.component";
 import { CanActivateGuard } from "./can-activate.guard";
 import { HttpService } from "./services/http.service";
 import { UserDataService } from "./services/user-data.service";
@@ -19,8 +18,7 @@ import { AuthInterceptor } from "./services/auth-interceptor.interceptor";
     TodoComponent,
     LoginComponent,
     TaskListComponent,
-    NewTodoComponent,
-    UpdateTodoComponent,
+    ChangeTodoComponent  
   ],
   imports: [
     CommonModule,

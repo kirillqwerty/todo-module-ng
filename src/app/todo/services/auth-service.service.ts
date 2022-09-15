@@ -4,10 +4,7 @@ import { Injectable } from "@angular/core";
 export class AuthService {
     
     private _token = "";
-
-    // constructor() {
-    // }
-
+    
     public get token(): string {
         return this._token;
     }

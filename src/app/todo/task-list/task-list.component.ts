@@ -66,12 +66,14 @@ export class TaskListComponent implements OnInit, OnDestroy{
     }
 
     public newTodo(): void {
-        this.router.navigate(["todo/add-todo"]);
+        this.userDataStream.setUpdatingMode(false);
+        this.router.navigate(["todo/change-todo"]);
     }
 
     public toUpdatePage(todo: Todo): void {
         this.userDataStream.setCurrentTodo(todo);
-        this.router.navigate(["todo/update-todo"]);
+        this.userDataStream.setUpdatingMode(true);
+        this.router.navigate(["todo/change-todo"]);
     }
 
     public back(): void {

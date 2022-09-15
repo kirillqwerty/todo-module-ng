@@ -16,6 +16,8 @@ export class DataStreamService{
 
     public updatedTodo$ = new ReplaySubject<Todo>(1);
 
+    public isUpdatingMode$ = new ReplaySubject<boolean>(1);
+
     public setUser(user: User): void{
         this.currentUser$.next(user);
     }
@@ -34,5 +36,9 @@ export class DataStreamService{
 
     public setUpdatedTodo(todo: Todo): void {
         this.updatedTodo$.next(todo);
+    }
+
+    public setUpdatingMode(value: boolean): void {
+        this.isUpdatingMode$.next(value);
     }
 }

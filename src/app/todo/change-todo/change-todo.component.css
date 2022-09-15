@@ -19,7 +19,9 @@
 }
 
 .back-arrow{
-    margin-right: 30%;
+    margin-top: 25px;
+    margin-left: 15px;
+    position: absolute;
     font-size: 35px;
     font-weight: 700;
     justify-content: center;
