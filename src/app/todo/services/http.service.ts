@@ -5,6 +5,8 @@ import { Observable } from "rxjs";
 import { User } from "../types/user";
 import { Todo } from "../types/todoType";
 import { TodoSettings } from "../types/todoSettings";
+// import { FullUserInfo } from "../types/fullUserInfo";
+import { fullUserInfoSettings } from "../types/fullUsersInfoSettings";
 import { FullUserInfo } from "../types/fullUserInfo";
 
 @Injectable()
@@ -45,11 +47,17 @@ export class HttpService{
         return this.http.put<Todo>(`api/auth/todos/${taskId}`, body, { withCredentials: true });
     }
 
-    public getUsers(limit: number, skip: number): Observable<FullUserInfo[]>{
-        return this.http.get<FullUserInfo[]>(`api/users?limit=${limit}&skip=${skip}`, { withCredentials: true });
+    public getUsers(limit: number, skip: number): Observable<fullUserInfoSettings>{
+        return this.http.get<fullUserInfoSettings>(`api/auth/users?limit=${limit}&skip=${skip}`, { withCredentials: true });
+    }
+
+    public getUserInfo(id: number): Observable<FullUserInfo>{
+        return this.http.get<FullUserInfo>(`api/auth/users/${id}`, { withCredentials: true})
     }
 
     public deleteTodo(taskId: number): Observable<Todo>{
         return this.http.delete<Todo>(`api/auth/todos/${taskId}`, { withCredentials: true });
     }
+
+    // public getUserImage(name: string): 
 }

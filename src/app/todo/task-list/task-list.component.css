@@ -18,19 +18,7 @@
     justify-content: space-around;
     align-items: center;
 }
-  
-  .main-list{
-    padding-bottom: 10px;
-    max-height: 950px;
-    background-color: #fefefe;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    border: 4px solid black;
-}
-
+ 
 .back-arrow{
     font-size: 35px;
     font-weight: 700;
@@ -42,20 +30,32 @@
     border: 3px solid black;
     border-radius: 15px;
     background: #fefefe;
-}
-
-.back-arrow:hover{
+  }
+  
+  .back-arrow:hover{
     /* background: #e6ae6e; */
     background: linear-gradient(90deg, rgba(254, 245, 208) 0%, rgba(243, 225, 234) 100%);
-
+  
     transition-duration: 0.2s;
     scale: 1.1;
     cursor: pointer;
-}
-
-.back-arrow:active{
+  }
+  
+  .back-arrow:active{
     scale: 1.01;
     opacity: 0.4;
+  }
+
+.main-list{
+    padding-bottom: 10px;
+    max-height: 950px;
+    background-color: #fefefe;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 4px solid black;
 }
 
 .todo-line{
@@ -131,22 +131,6 @@
     transition-duration:0ms;
     opacity: 0.4;
 }
-
-.background{
-    /* backdrop-filter: blur(10px); */
-    pointer-events: none;
-    animation: 0.3s blurScale;
-    filter: blur(5px); 
-}
-
-@keyframes blurScale {
-    from {
-        filter: blur(0px);
-    }
-    to {
-        filter: blur(5px);
-    }
-  }
 
 .delete-message{
     position: fixed;

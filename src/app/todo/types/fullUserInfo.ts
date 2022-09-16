@@ -2,7 +2,7 @@ export type FullUserInfo = {
     id: number,
     firstName: string,
     lastName: string,
-    userName: string,
+    username: string,
     age: number,
     password: string,
     birthDate: string,

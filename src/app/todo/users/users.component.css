@@ -1,6 +1,6 @@
 .main-window{
     margin: 0 auto;
-    height: 500px;
+    max-height: 100%;
     width: 1000px;
     background: #fefefe;
     border-radius: 15px;
@@ -19,6 +19,15 @@
     align-items: center;
 }
 
+.user-list{
+    padding-bottom: 10px;
+    max-height: 95%;
+    border: 4px solid black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .column-name{
     display: block;
     font-size: 25px;
@@ -32,3 +41,85 @@
 .column-name:hover{
     color: rgba(199,115,155,1); 
 }
+
+.user-line{
+    border: 4px solid black;
+    border-radius: 15px;
+    /* padding-left: 10px;     */
+    justify-content:center;
+    align-items: center;
+    display: flex;
+    height: 60px;
+    width: 98%;
+    margin-top: 10px;
+    background: linear-gradient(90deg, rgba(255, 214, 33, 0.209) 0%, rgba(199, 115, 156, 0.209) 100%);
+    /* padding-right: 10px; */
+}
+
+.user-line:hover{
+    cursor: pointer;
+    transition-duration: 100ms;
+    scale: 1.01;
+    /* background: linear-gradient(90deg, rgba(255, 214, 33, 0.3) 0%, rgba(199, 115, 156, 0.3) 100%); */
+    background: #fefefe;
+
+}
+
+.user-line:active{
+    box-shadow: 0px 0px 30px 12px rgba(34, 60, 80, 0.2) inset;
+}
+
+.property, .property-id, .property-name, .property-lastname{
+    justify-content:center;
+    align-items: center;
+    display: flex;
+    font-weight: 100;
+    font-size: 20px;
+    width: 100%;
+}
+
+.property-id{
+    width:70%;
+    justify-content: start;
+}
+
+.property-name, .property-lastname{
+    justify-content: start;
+}
+
+.footer{
+    height: 75px;
+    background: #e6ae6e;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .back-arrow{
+    margin-top: 25px;
+    margin-left: 15px; 
+    font-size: 35px;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 46px;
+    width: 46px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background: #fefefe;
+}
+
+.back-arrow:hover{
+    background: linear-gradient(90deg, rgb(241, 193, 88) 0%, rgba(239, 190, 91  , 1) 100%);
+    transition-duration: 0.2s;
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.back-arrow:active{
+    
+    scale: 1.01;
+    opacity: 0.4;
+} */

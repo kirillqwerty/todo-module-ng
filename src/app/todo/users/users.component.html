@@ -1,10 +1,11 @@
-<div class="markers">
+<div class="markers" [ngClass]="{background: isPopUpActive}">
     <li class="tab" (click)="goToTodos()">Todos</li>    
     <li class="tab-current"><a class="head-label">Users</a></li>
 </div>
 
-<div class="main-window">
+<div class="main-window" [ngClass]="{background: isPopUpActive}">
     <div class="head-container">
+        <!-- <a class="back-arrow" (click)="back()">&larr;</a>    -->
         <li class="column-name">ID</li>
         <li class="column-name">First name</li>
         <li class="column-name">Last name</li>
@@ -12,4 +13,20 @@
         <li class="column-name">Password</li>
         <li class="column-name">Birth date</li>
     </div>
+
+    <div class="user-list">
+        <button *ngFor="let user of this.data" class="user-line" (click)="showInfo(user.id)">
+            <div class="property-id">{{user.id}}</div>
+            <div class="property-name">{{user.firstName}}</div>
+            <div class="property-lastname">{{user.lastName}}</div>
+            <div class="property">{{user.username}}</div>
+            <div class="property">{{user.password}}</div>
+            <div class="property">{{user.birthDate}}</div>
+        </button>
+    </div>
+    <div class="footer">
+
+    </div>
 </div>
+
+<app-user-info *ngIf="isPopUpActive"></app-user-info>

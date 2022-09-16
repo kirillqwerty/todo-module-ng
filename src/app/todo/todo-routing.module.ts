@@ -9,8 +9,9 @@ import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
     { path: "login", component: LoginComponent },
-    // { path: "todos", component: TaskListComponent, canActivate: [CanActivateGuard] },
-    { path: "todos", component: TaskListComponent},
+    { path: "todos", component: TaskListComponent, canActivate: [CanActivateGuard] },
+    // { path: "todos", component: TaskListComponent},
+    // { path: "users", component: UsersComponent, canActivate: [CanActivateGuard]},
     { path: "users", component: UsersComponent},
     { path: "change-todo", component: ChangeTodoComponent, canActivate: [CanActivateGuard] },
 ];

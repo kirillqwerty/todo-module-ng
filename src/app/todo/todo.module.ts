@@ -14,13 +14,15 @@ import { DataStreamService } from "./services/user-data-stream.service";
 import { AuthService } from "./services/auth-service.service";
 import { AuthInterceptor } from "./services/auth-interceptor.interceptor";
 import { UsersComponent } from "./users/users.component";
+import { UserInfoComponent } from './user-info/user-info.component';
 @NgModule({
   declarations: [
     TodoComponent,
     LoginComponent,
     TaskListComponent,
     ChangeTodoComponent,
-    UsersComponent  
+    UsersComponent,
+    UserInfoComponent  
   ],
   imports: [
     CommonModule,
