@@ -32,7 +32,7 @@
     background: #fefefe;
   }
   
-  .back-arrow:hover{
+.back-arrow:hover{
     /* background: #e6ae6e; */
     background: linear-gradient(90deg, rgba(254, 245, 208) 0%, rgba(243, 225, 234) 100%);
   
@@ -41,7 +41,7 @@
     cursor: pointer;
   }
   
-  .back-arrow:active{
+.back-arrow:active{
     scale: 1.01;
     opacity: 0.4;
   }

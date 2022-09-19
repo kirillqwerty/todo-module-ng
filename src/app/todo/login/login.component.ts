@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit, OnDestroy{
 
                 },
                 error: () => {
-                    this.loading = false;
                     this.loginForm.setValue({login: "", password: ""});                
                     alert("try again");
+                    this.loading = false;
                 }
             })
     }

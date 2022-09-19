@@ -16,6 +16,7 @@ body{
   display: flex;
   justify-content: center;
   align-items:center;
+  position: relative;
 }
 
 .background{
@@ -90,30 +91,29 @@ body{
 }
 
 .loader {
-  position: absolute;
-  top: 45%;
-  left: 45.8%;
+  --b: 20px;  /* border thickness */
+  --n: 20;   
+  --g: 10deg;
+  --c: rgba(255,216,33,1);   
   
-  --n:5;    
-  --s:25px;
-  --g:5px; 
-  color:black;
-  border-radius:15px;
-  width:calc(var(--n)*(var(--s) + var(--g)) - var(--g));
-  height:30px;
-  padding:var(--g);
-  margin:5px auto;
-  border:3px solid;
-  box-shadow: 0px 0px 6px 6px rgba(34, 60, 80, 0.22);
-  background:
-    repeating-linear-gradient(90deg,
-      currentColor  0 var(--s),
-      #0000 0 calc(var(--s) + var(--g))
-    ) left / calc((var(--n) + 1)*(var(--s) + var(--g))) 100% 
-    no-repeat content-box;
-  animation: load 1.5s steps(calc(var(--n) + 1)) infinite;
-  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  margin: -50px 0 0 -50px; 
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px; 
+  background: conic-gradient(rgba(199,115,155,1)0,var(--c)) content-box;
+  --_m:
+    repeating-conic-gradient(rgba(199,115,155,1) 0deg,
+    rgba(199,115,155,1)1deg calc(360deg/var(--n) - var(--g) - 1deg),
+       #0000     calc(360deg/var(--n) - var(--g)) calc(360deg/var(--n))),
+    radial-gradient(farthest-side,#0000 calc(98% - var(--b)),#000 calc(100% - var(--b)));
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+  animation: load 1s infinite steps(var(--n));
 }
-@keyframes load {
-  0% {background-size: 0% 100%;}
-}
+@keyframes load {to{transform: rotate(1turn)}}
