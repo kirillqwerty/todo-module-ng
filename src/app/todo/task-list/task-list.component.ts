@@ -87,7 +87,7 @@ export class TaskListComponent implements OnInit, OnDestroy{
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (data) => {
-                    this.userDataStream.setAllUsers(data.users);
+                    this.userDataStream.setAllUsers(data);
                     this.router.navigate(["todo/users"]);
                     this.loading = false;
                     this.cdr.detectChanges();

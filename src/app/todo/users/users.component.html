@@ -24,8 +24,13 @@
             <div class="property">{{user.birthDate}}</div>
         </button>
     </div>
-    <div class="footer">
 
+    <div class="footer">
+        <div class="page-num-container">
+            <a class="number" *ngFor="let page of pages;" (click)="setCurrentPage(page)" [ngClass]="{number_current: page === currentPage}">
+                {{page}}
+            </a>
+        </div>     
     </div>
 </div>
 

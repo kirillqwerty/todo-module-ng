@@ -39,7 +39,13 @@ export class UsersComponent implements OnInit, OnDestroy {
         
     // ]
 
-    public pages?: number;
+    // public pages: number[] = [];
+    public pages = [1,2,3,4,5,6,7,8,9,10]
+
+    public currentPage = 1;
+    
+
+    public listSize = 10;
 
     private readonly unsubscribe$: Subject<void> = new Subject();
 
@@ -53,8 +59,12 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.userDataStream.allUsers$
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((data) => {
-                this.data = data;
-                console.log(data);
+                // console.log(data.total);
+                // for (let i = 1; i <= data.total/this.listSize; i++) {                    
+                //     this.pages?.push(i);
+                // }
+                this.data = data.users;
+                console.log(this.pages);
             })
 
         this.userDataStream.isUserInfoActive$
@@ -93,6 +103,10 @@ export class UsersComponent implements OnInit, OnDestroy {
                     console.log("error")
                 }
             })
+    }
+
+    public setCurrentPage(index: number): void {
+        this.currentPage = index;
     }
 
     public ngOnDestroy(): void {
