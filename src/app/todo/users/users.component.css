@@ -136,10 +136,10 @@
 .number, .number_current{
     font-size: 25px;
     color: rgba(255,216,33,1);
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease; 
-    text-shadow: 2px 2px 2px #000;
+    text-shadow: 1px 1px 1px #000;
 }
   
 .number:hover{
@@ -162,4 +162,15 @@
 .number_current:hover{
     scale: 1;
     color: black;
+}
+
+form{
+    position: absolute;
+    margin-left: 20%;
+}
+
+select{
+    font-size: 15px;
+    height: 5%;
+    border-radius: 10px;
 }

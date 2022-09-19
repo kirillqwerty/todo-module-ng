@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { HttpService } from "../services/http.service";
@@ -16,9 +17,9 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     public data?: FullUserInfo[];
 
-    // public isPopUpActive = false;
-
     public isPopUpActive = false;
+
+    // public isPopUpActive = true;
 
     public loading = false;
 
@@ -39,11 +40,16 @@ export class UsersComponent implements OnInit, OnDestroy {
         
     // ]
 
-    // public pages: number[] = [];
-    public pages = [1,2,3,4,5,6,7,8,9,10]
+    public pagesNumber: number[] = [];
+    // public pages = [1,2,3,4,5,6,7,8,9,10]
 
     public currentPage = 1;
     
+    public selectedSetForm = new FormGroup({
+        selectedSet: new FormControl(10, [Validators.required])
+    });
+
+    public pageSet = [10,20,50];
 
     public listSize = 10;
 
@@ -59,21 +65,33 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.userDataStream.allUsers$
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((data) => {
-                // console.log(data.total);
-                // for (let i = 1; i <= data.total/this.listSize; i++) {                    
-                //     this.pages?.push(i);
-                // }
-                this.data = data.users;
-                console.log(this.pages);
+                this.pagesNumber = [];
+                console.log(data.total);
+                for (let i = 1; i <= data.total/this.listSize; i++) {                    
+                    this.pagesNumber?.push(i);
+                }
+                // this.data = data.users;
+                console.log(this.pagesNumber);
+                this.cdr.detectChanges();
             })
 
         this.userDataStream.isUserInfoActive$
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((condition) => {
                 this.isPopUpActive = condition;
+                this.cdr.detectChanges();
             })
+            
+        this.selectedSetForm.valueChanges
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((data) => {
+                this.listSize = data.selectedSet as number;
+                console.log(this.listSize);
+                this.cdr.detectChanges();
+            })    
 
-        this.cdr.detectChanges();
+             
+        // this.cdr.detectChanges();
     }
 
     public goToTodos(): void {
@@ -96,17 +114,24 @@ export class UsersComponent implements OnInit, OnDestroy {
                     this.isPopUpActive = true;
                     console.log(this.isPopUpActive);
                     this.loading = false;
-                    this.cdr.detectChanges();
+                    
                 },
                 error: () => {
                     this.loading = false;   
                     console.log("error")
                 }
             })
+            this.cdr.detectChanges();
     }
 
     public setCurrentPage(index: number): void {
         this.currentPage = index;
+        // this.pagesNumber = [];
+        //         // console.log(data.total);
+        //         for (let i = 1; i <= 100/this.listSize; i++) {                    
+        //             this.pagesNumber?.push(i);
+        //         }
+        this.cdr.detectChanges();
     }
 
     public ngOnDestroy(): void {

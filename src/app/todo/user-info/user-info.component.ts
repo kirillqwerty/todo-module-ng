@@ -30,7 +30,7 @@ export class UserInfoComponent implements OnInit {
         private dataStream: DataStreamService) { }
 
     public ngOnInit(): void {
-        this.userInfo = this.userData.userInfo;
+        // this.userInfo = this.userData.userInfo;
         console.log("this is from popup");
         console.log(this.userInfo);
     }

@@ -27,10 +27,18 @@
 
     <div class="footer">
         <div class="page-num-container">
-            <a class="number" *ngFor="let page of pages;" (click)="setCurrentPage(page)" [ngClass]="{number_current: page === currentPage}">
+            <a class="number" *ngFor="let page of pagesNumber;" (click)="setCurrentPage(page)" [ngClass]="{number_current: page === currentPage}">
                 {{page}}
             </a>
-        </div>     
+        </div>
+
+        <form [formGroup]="selectedSetForm">
+            <select formControlName="selectedSet">
+                <option *ngFor="let set of pageSet" [ngValue]=set>
+                {{set}}
+                </option>     
+            </select>
+        </form>
     </div>
 </div>
 
