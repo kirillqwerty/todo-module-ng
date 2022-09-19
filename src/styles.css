@@ -1,13 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Silkscreen:wght@100;400;700&display=swap');
 body{
     font-family: 'Roboto', sans-serif;
-    /* -webkit-text-shadow: 1px 1px 1px #000;
-  -moz-text-shadow: 1px 1px 1px #000;
-      text-shadow: 1px 1px 1px #000; */
     overflow-x: hidden;
     background: linear-gradient(90deg, rgba(255,216,33,1) 0%, rgba(199,115,155,1) 100%);
     user-select: none;  
 }
+
+.markers{
+  margin: 0 auto;
+  margin-top: 5%;
+  height: 100px;
+  width: 400px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.background{
+  /* backdrop-filter: blur(10px); */
+  pointer-events: none;
+  animation: 0.3s blurScale;
+  filter: blur(5px); 
+  
+}
+
+@keyframes blurScale {
+  from {
+      filter: blur(0px);
+  }
+  to {
+      filter: blur(5px);
+  }
+}
+
+.tab, .tab-current{
+  align-self: flex-end;
+  border-top: 4px solid black;
+  border-left: 4px solid black;
+  border-right: 4px solid black;
+  height:40%;
+  width:50%;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  background: #fefefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.tab:hover{
+  cursor: pointer;
+  transition-duration: 200ms;
+  background: linear-gradient(90deg, rgba(254, 245, 208) 0%, rgba(243, 225, 234) 100%);
+  height: 50%;
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
+.tab-current{
+  box-shadow: 0px -14px 19px -4px rgba(34, 60, 80, 0.2);
+  border: none;
+  background: #e6ae6e;
+  letter-spacing: 1px;
+  font-size: 30px;
+  height: 60%;
+}
+
+.tab:active{
+  transition-duration: 0ms;
+  box-shadow: 0px 0px 30px 12px rgba(34, 60, 80, 0.2) inset;
+}
+
 
 .head-label{
   font-size: 40px;
@@ -20,4 +87,32 @@ body{
 
 .head-label:hover{
   color: rgba(199,115,155,1); 
+}
+
+.loader {
+  position: absolute;
+  top: 45%;
+  left: 45.8%;
+  --n:5;    
+  --s:25px;
+  --g:5px; 
+  color:black;
+  border-radius:15px;
+  width:calc(var(--n)*(var(--s) + var(--g)) - var(--g));
+  height:30px;
+  padding:var(--g);
+  margin:5px auto;
+  border:3px solid;
+  box-shadow: 0px 0px 6px 6px rgba(34, 60, 80, 0.22);
+  background:
+    repeating-linear-gradient(90deg,
+      currentColor  0 var(--s),
+      #0000 0 calc(var(--s) + var(--g))
+    ) left / calc((var(--n) + 1)*(var(--s) + var(--g))) 100% 
+    no-repeat content-box;
+  animation: load 1.5s steps(calc(var(--n) + 1)) infinite;
+  
+}
+@keyframes load {
+  0% {background-size: 0% 100%;}
 }

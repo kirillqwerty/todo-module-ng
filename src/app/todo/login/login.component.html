@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" class="main-form">
+<form [formGroup]="loginForm" class="main-form" [ngClass]="{background: loading}">
     
     <div class="head-label">
         <h3>Login</h3>
@@ -24,3 +24,5 @@
     <button (click)="signIn()" [disabled]="!loginForm.value.login || !loginForm.value.password " onclick="disabled = true">Sign in</button>
 
 </form>
+
+<div *ngIf="loading" class="loader"></div>

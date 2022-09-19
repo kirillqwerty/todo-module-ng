@@ -37,6 +37,8 @@ export class TaskListComponent implements OnInit, OnDestroy{
 
     public isConfirmation = false;
 
+    public loading = false;
+
     private readonly unsubscribe$: Subject<void> = new Subject();
 
     constructor(private userDataStream: DataStreamService,
@@ -80,12 +82,21 @@ export class TaskListComponent implements OnInit, OnDestroy{
     }
 
     public goToUsers(): void {
+        this.loading = true;
         this.httpService.getUsers(10, 0)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (data) => {
                     this.userDataStream.setAllUsers(data.users);
                     this.router.navigate(["todo/users"]);
+                    this.loading = false;
+                    this.cdr.detectChanges();
+                },
+
+                error: () => {
+                    console.log("error");
+                    this.loading = false;
+                    this.cdr.detectChanges();
                 }
             })
     }
@@ -114,21 +125,24 @@ export class TaskListComponent implements OnInit, OnDestroy{
         }
         // this.isConfirmation = true;
         if (this.taskToDelete?.id !== undefined) {
+            this.loading = true;
             this.httpService.deleteTodo(this.taskToDelete?.id)
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next: (data) => {
                         if (this.taskToDelete !== undefined) {
                             console.log(data);
-                            this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1)
-                            this.cdr.detectChanges();    
+                            this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1);
                         }
+                        this.loading = false;
+                        this.cdr.detectChanges(); 
                     },
                     error: () => {
                         console.log("error");
                         if (this.dataService.currentTodos !== undefined && this.taskToDelete !== undefined){
                             this.dataService.currentTodos[this.dataService.currentTodos.indexOf(this.taskToDelete)].usermade = false;
                         }
+                        this.loading = false;
                         this.cdr.detectChanges();
                     }
                 })    

@@ -27,6 +27,8 @@ export class ChangeTodoComponent implements OnInit, OnDestroy{
     public headerLabelText = "";
     public buttonText = "";
 
+    public loading = false;
+
     private readonly unsubscribe$: Subject<void> = new Subject();
 
     private isUpdatingTodoMode = false;
@@ -84,6 +86,7 @@ export class ChangeTodoComponent implements OnInit, OnDestroy{
     }   
 
     public addTodo(): void{
+        this.loading = true;
         this.httpService.addTodo(this.user?.id as number, this.taskInput.value as string)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
@@ -95,16 +98,19 @@ export class ChangeTodoComponent implements OnInit, OnDestroy{
                     this.userData.currentTodos?.push(data);
                     this.router.navigate(["todo/todos"]);
                     this.btnAllow = true;
+                    this.loading = false;
                 },
                 error: () => {
                     console.log("error");
                     this.btnAllow = true;
+                    this.loading = false;
                     this.cdr.detectChanges();
                 },
             });
     }
 
     public updateTodo(): void {
+        this.loading = true;
         this.httpService.updateTodo(this.todo?.id as number, <string>this.taskInput.value)            
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
@@ -113,10 +119,12 @@ export class ChangeTodoComponent implements OnInit, OnDestroy{
                     this.dataStreamService.setUpdatedTodo(data);
                     this.router.navigate(["todo/todos"]);
                     this.btnAllow = true;
+                    this.loading = false;
                 },
                 error: () => { 
                     console.log("error"); 
                     this.btnAllow = true;
+                    this.loading = false;
                     this.cdr.detectChanges();
                 }
             });

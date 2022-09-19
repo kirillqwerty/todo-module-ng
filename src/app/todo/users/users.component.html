@@ -1,9 +1,9 @@
-<div class="markers" [ngClass]="{background: isPopUpActive}">
+<div class="markers" [ngClass]="{background: isPopUpActive || loading}">
     <li class="tab" (click)="goToTodos()">Todos</li>    
     <li class="tab-current"><a class="head-label">Users</a></li>
 </div>
 
-<div class="main-window" [ngClass]="{background: isPopUpActive}">
+<div class="main-window" [ngClass]="{background: isPopUpActive || loading}">
     <div class="head-container">
         <!-- <a class="back-arrow" (click)="back()">&larr;</a>    -->
         <li class="column-name">ID</li>
@@ -30,3 +30,4 @@
 </div>
 
 <app-user-info *ngIf="isPopUpActive"></app-user-info>
+<div *ngIf="loading" class="loader"></div>

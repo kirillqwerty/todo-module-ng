@@ -1,4 +1,4 @@
-<div class="main-window">
+<div class="main-window" [ngClass]="{background: loading}">
     <a class="back-arrow" (click)="back()">&larr;</a>   
     <div class="head-container">
         <label class="head-label">{{headerLabelText}}</label>
@@ -13,3 +13,4 @@
         <button class="add-btn" (click)="changeTodos()" [disabled]="!taskInput.value || !btnAllow" >{{buttonText}}</button>
     </div>
 </div>
+<div *ngIf="loading" class="loader"></div>

@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy{
         password: [<string | null> "", [Validators.required]]
     })
 
+    public loading = false;
+
     private readonly unsubscribe$: Subject<void> = new Subject();
 
 
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy{
                 private authService: AuthService) { }
     
     public signIn(): void{
+
+        this.loading = true;
 
         const user: DataToLogin = {
             username: this.loginForm.value.login as string,
@@ -56,12 +60,14 @@ export class LoginComponent implements OnInit, OnDestroy{
                                 }
                                 this.userData.currentTodos = data.todos;
                                 console.log(this.userData.currentTodos);
+                                this.loading = false;
                                 this.router.navigate(["todo/todos"]);
                             }
                         });
 
                 },
                 error: () => {
+                    this.loading = false;
                     this.loginForm.setValue({login: "", password: ""});                
                     alert("try again");
                 }

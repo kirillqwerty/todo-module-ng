@@ -1,69 +1,54 @@
 <div class="main-container">
     <div class="header">
-        <!-- <a class="back-arrow" (click)="back()">&larr;</a> -->
-        <label class="head-label">User Information</label>
+        <a class="back-arrow" (click)="back()">&larr;</a>
+        <label class="head-label" style="font-size: 30px;">User Information</label>
+    </div>
+
+    <div class="image-container">
+        <img src="{{userInfo?.image}}">
     </div>
 
     <div class="info-container">
-        <img src="{{userInfo?.image}}">
-
-    <div *ngFor="let key of keys">
-        <!-- {{userInfo[key]}} -->
-    </div>
-
-    <!-- <table>
         <tr>
             <th>ID</th>
-            <td>{{userInfo.id}}</td>
+            <td>{{userInfo?.id}}</td>
         </tr>
         <tr>
             <th>User name</th>
-            <td>{{userInfo.username}}</td>
+            <td>{{userInfo?.username}}</td>
         </tr>
         <tr>
-            <th>Password/th>
-            <td>{{userInfo.password}}</td>
+            <th>Password</th>
+            <td>{{userInfo?.password}}</td>
         </tr>
         <tr>
             <th>First name</th>
-            <td>{{userInfo.firstName}}</td>
+            <td>{{userInfo?.firstName}}</td>
         </tr>
-
         <tr>
             <th>Last name</th>
-            <td>{{userInfo.lastName}}</td>
+            <td>{{userInfo?.lastName}}</td>
         </tr>
         <tr>
             <th>Age</th>
-            <td>{{userInfo.age}}</td>
+            <td>{{userInfo?.age}}</td>
         </tr>
         <tr>
             <th>Birth date</th>
-            <td>{{userInfo.birthDate}}</td>
+            <td>{{userInfo?.birthDate}}</td>
         </tr>
         <tr>
             <th>Blood group</th>
-            <td>{{userInfo.bloodGroup}}</td>
+            <td>{{userInfo?.bloodGroup}}</td>
         </tr>
-
         <tr>
             <th>Height</th>
-            <td>{{userInfo.height}}</td>
+            <td>{{userInfo?.height}}</td>
         </tr>
-        <tr>
+        <tr class="bordered-row">
             <th>Weight</th>
-            <td>{{userInfo.weight}}</td>
+            <td>{{userInfo?.weight}}</td>
         </tr>
-        <div class="property">ID{{userInfo.id}}</div>
-        <div class="property">{{userInfo.firstName}}</div>
-        <div class="property">{{userInfo.lastName}}</div>
-        <div class="property">{{userInfo.username}}</div>
-        <div class="property">{{userInfo.age}}</div>
-        <div class="property">{{userInfo.password}}</div>
-        <div class="property">{{userInfo.birthDate}}</div>
-        <div class="property">{{userInfo.bloodGroup}}</div>
-        <div class="property">{{userInfo.height}}</div>
-        <div class="property">{{userInfo.weight}}</div>
-    </table> -->
     </div>
+        
 </div>

@@ -18,7 +18,9 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     // public isPopUpActive = false;
 
-    public isPopUpActive = true;
+    public isPopUpActive = false;
+
+    public loading = false;
 
     // public data = [
     //     {id: 1111, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
@@ -37,7 +39,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         
     // ]
 
-    public pages = 5;
+    public pages?: number;
 
     private readonly unsubscribe$: Subject<void> = new Subject();
 
@@ -55,6 +57,12 @@ export class UsersComponent implements OnInit, OnDestroy {
                 console.log(data);
             })
 
+        this.userDataStream.isUserInfoActive$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((condition) => {
+                this.isPopUpActive = condition;
+            })
+
         this.cdr.detectChanges();
     }
 
@@ -67,6 +75,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     public showInfo(id: number): void {
+        this.loading = true;
         console.log(this.isPopUpActive);
         this.httpService.getUserInfo(id)
             .pipe(takeUntil(this.unsubscribe$))
@@ -76,9 +85,11 @@ export class UsersComponent implements OnInit, OnDestroy {
                     console.log(this.userData.userInfo);
                     this.isPopUpActive = true;
                     console.log(this.isPopUpActive);
+                    this.loading = false;
                     this.cdr.detectChanges();
                 },
                 error: () => {
+                    this.loading = false;   
                     console.log("error")
                 }
             })
