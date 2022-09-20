@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { DataStreamService } from "../services/user-data-stream.service";
 import { UserDataService } from "../services/user-data.service";
 import { FullUserInfo } from "../types/fullUserInfo";
@@ -6,7 +6,8 @@ import { FullUserInfo } from "../types/fullUserInfo";
 @Component({
     selector: "app-user-info",
     templateUrl: "./user-info.component.html",
-    styleUrls: ["./user-info.component.css"]
+    styleUrls: ["./user-info.component.css"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserInfoComponent implements OnInit {
 

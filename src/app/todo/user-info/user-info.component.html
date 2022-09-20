@@ -1,54 +1,53 @@
 <div class="main-container">
     <div class="header">
         <a class="back-arrow" (click)="back()">&larr;</a>
-        <label class="head-label" style="font-size: 30px;">User Information</label>
+        <label class="head-label">User Information</label>
     </div>
 
     <div class="image-container">
-        <img src="{{userInfo?.image}}">
+        <img [src] = "userInfo?.image">
     </div>
 
     <div class="info-container">
-        <tr>
-            <th>ID</th>
-            <td>{{userInfo?.id}}</td>
-        </tr>
-        <tr>
-            <th>User name</th>
-            <td>{{userInfo?.username}}</td>
-        </tr>
-        <tr>
-            <th>Password</th>
-            <td>{{userInfo?.password}}</td>
-        </tr>
-        <tr>
-            <th>First name</th>
-            <td>{{userInfo?.firstName}}</td>
-        </tr>
-        <tr>
-            <th>Last name</th>
-            <td>{{userInfo?.lastName}}</td>
-        </tr>
-        <tr>
-            <th>Age</th>
-            <td>{{userInfo?.age}}</td>
-        </tr>
-        <tr>
-            <th>Birth date</th>
-            <td>{{userInfo?.birthDate}}</td>
-        </tr>
-        <tr>
-            <th>Blood group</th>
-            <td>{{userInfo?.bloodGroup}}</td>
-        </tr>
-        <tr>
-            <th>Height</th>
-            <td>{{userInfo?.height}}</td>
-        </tr>
-        <tr class="bordered-row">
-            <th>Weight</th>
-            <td>{{userInfo?.weight}}</td>
-        </tr>
-    </div>
-        
+        <div class="info-row">
+            <div><b>ID</b></div>
+            <div>{{userInfo?.id}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>User name</b></div>
+            <div>{{userInfo?.username}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>Password</b></div>
+            <div>{{userInfo?.password}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>First name</b></div>
+            <div>{{userInfo?.firstName}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>Last name</b></div>
+            <div>{{userInfo?.lastName}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>Age</b></div>
+            <div>{{userInfo?.age}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>Birth date</b></div>
+            <div>{{userInfo?.birthDate | date}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>Blood group</b></div>
+            <div>{{userInfo?.bloodGroup}}</div>
+        </div>
+        <div class="info-row">
+            <div><b>Height</b></div>
+            <div>{{userInfo?.height}}</div>
+        </div>
+        <div class="info-row" class="bordered-row">
+            <div><b>Weight</b></div>
+            <div>{{userInfo?.weight}}</div>
+        </div>
+    </div>       
 </div>

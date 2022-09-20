@@ -2,53 +2,59 @@
     <li class="tab" (click)="goToTodos()">Todos</li>    
     <li class="tab-current"><a class="head-label">Users</a></li>
 </div>
-<div class="main-container" [ngClass]="{background: isPopUpActive || loading}">
-    <div class="left-arrow-wrapper"> 
-        <a class="left-arrow" (click)="previousPage()"></a>
-    </div>
-    <div class="main-window" >
-        <div class="head-container">
-            <!-- <a class="back-arrow" (click)="back()">&larr;</a>    -->
-            <li class="column-name">ID</li>
-            <li class="column-name">First name</li>
-            <li class="column-name">Last name</li>
-            <li class="column-name">Username</li>
-            <li class="column-name">Password</li>
-            <li class="column-name">Birth date</li>
+
+<div class="main-window" [ngClass]="{background: isPopUpActive || loading}">
+    <table cellSpacing="0">
+        <thead class="head-container">
+            <tr>
+                <th class="column-name-first">ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Birth date</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let user of this.userInfo" class="user-line" (click)="showInfo(user.id)">
+                <td class="first-cell">{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.birthDate | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="footer">
+        <div class="left-arrow-wrapper"> 
+            <a class="left-arrow" 
+            (click)="previousPage()"
+            [ngClass]="{left_arrow_disabled: this.currentPage === this.pagesNumber[0]}"></a>
         </div>
-    
-        <div class="user-list">
-            <button *ngFor="let user of this.userInfo" class="user-line" (click)="showInfo(user.id)">
-                <div class="property-id">{{user.id}}</div>
-                <div class="property-name">{{user.firstName}}</div>
-                <div class="property-lastname">{{user.lastName}}</div>
-                <div class="property">{{user.username}}</div>
-                <div class="property">{{user.password}}</div>
-                <div class="property">{{user.birthDate}}</div>
-            </button>
-        </div>
-    
-        <div class="footer">
-            <div class="page-num-container">
-                <a class="number" *ngFor="let page of pagesNumber;" 
-                (click)="setCurrentPage(page)" 
-                [ngClass]="{number_current: page === currentPage}"
-                >
-                    {{page}}
-                </a>
-    
-                <form [formGroup]="selectedSetForm">
-                    <select formControlName="selectedSet">
-                        <option *ngFor="let set of pageSet" [ngValue]=set>
+
+        <div class="numbers-wrapper">
+            <a class="number" *ngFor="let page of pagesNumber;" 
+            (click)="setCurrentPage(page)" 
+            [ngClass]="{number_current: page === currentPage}"
+            >
+                {{page}}
+            </a>
+            <form>
+                <select [formControl]="selectedSet">
+                    <option *ngFor="let set of pageSet" [ngValue]="set">
                         {{set}}
-                        </option>     
-                    </select>
-                </form>
-            </div>     
+                    </option>     
+                </select>
+            </form>
+        </div>                
+        
+        <div class="right-arrow-wrapper"> 
+            <a class="right-arrow"
+           (click)="nextPage()"
+            [ngClass]="{right_arrow_disabled: this.currentPage === this.pagesNumber[this.pagesNumber.length - 1]}"></a>
         </div>
-    </div>
-    <div class="right-arrow-wrapper"> 
-        <a class="right-arrow" (click)="nextPage()"></a>
     </div>
 </div>
 

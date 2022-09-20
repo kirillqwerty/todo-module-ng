@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { HttpService } from "../services/http.service";
@@ -17,19 +17,19 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     public userInfo?: FullUserInfo[];
 // public userInfo = [
-//         {id: 1111, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 2222, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 3333, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 4444, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 5555, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 6666, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 7777, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 8888, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 9999, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 42314, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 434324, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 8567, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
-//         {id: 37334, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.01.2000"},
+//         {id: 1, firstName: "asdfas", lastName: "d12d12d12d", username: "121212", password: "fasdfdfsadf", birthDate: "12.01.2000"},
+//         {id: 2, firstName: "2323ffs", lastName: "fsdafsad", username: "asdfsadf", password: "d3d3d31d", birthDate: "12.02.2000"},
+//         {id: 3, firstName: "csacsacdas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.03.2000"},
+//         {id: 2, firstName: "asdfas", lastName: "d1d12", username: "asdfsadf", password: "d3d3d12d", birthDate: "12.04.2000"},
+//         {id: 1, firstName: "ww", lastName: "fsdafsad", username: "zvzxcvzx", password: "fasdfdfsadf", birthDate: "12.05.2000"},
+//         {id: 1, firstName: "eqweqw", lastName: "fsdafsad", username: "asdfsadf", password: "ddsa213d3d21", birthDate: "12.06.2000"},
+//         {id: 12, firstName: "4343", lastName: "d21", username: "cdsaccsadc", password: "fasdfdfsadf", birthDate: "12.07.2000"},
+//         {id: 12, firstName: "eeee", lastName: "d21d12d12", username: "zxcvzxv", password: "fasdfdfsadf", birthDate: "12.08.2000"},
+//         {id: 12, firstName: "asdfas", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.09.2000"},
+//         {id: 12, firstName: "ddddafcadv", lastName: "21d12d12d", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.10.2000"},
+//         {id: 12, firstName: "cd", lastName: "fsdafsad", username: "asdfsadf", password: "fasdfdfsadf", birthDate: "12.11.2000"},
+//         {id: 12, firstName: "asdfas", lastName: "fsdafsad", username: "vaasdv", password: "12d321d123d", birthDate: "12.12.2000"},
+//         {id: 12, firstName: "asdfas", lastName: "d12", username: "211212", password: "fasdfdfsadf", birthDate: "12.01.2000"},
         
 //     ]
 
@@ -39,11 +39,11 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     public pagesNumber: number[] = [];
 
+    // public pagesNumber: number[] = [1,2,3,4,5,6,7,8,9,10];
+
     public currentPage = 1;
     
-    public selectedSetForm = new FormGroup({
-        selectedSet: new FormControl(10, [Validators.required])
-    });
+    public selectedSet = new FormControl(10, [Validators.required]);
 
     public pageSet = [10,20,50];
 
@@ -60,10 +60,10 @@ export class UsersComponent implements OnInit, OnDestroy {
                 private userData: UserDataService) { }
 
     public ngOnInit(): void {
-        this.selectedSetForm.valueChanges
+        this.selectedSet.valueChanges
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((data) => {
-                this.listSize = data.selectedSet as number;
+                this.listSize = data as number;
                 this.pagesNumber = [];
                 console.log(this.listSize);
                 if (this.totalUsers) {

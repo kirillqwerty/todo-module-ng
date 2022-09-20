@@ -111,7 +111,7 @@ export class ChangeTodoComponent implements OnInit, OnDestroy{
 
     public updateTodo(): void {
         this.loading = true;
-        this.httpService.updateTodo(this.todo?.id as number, <string>this.taskInput.value)            
+        this.httpService.updateTodo(this.todo?.id as number, this.taskInput.value as string)            
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (data: Todo) => {
