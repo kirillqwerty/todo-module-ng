@@ -35,14 +35,9 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     public isPopUpActive = false;
 
-    // public isPopUpActive = true;
-
     public loading = false;
 
-    
-
     public pagesNumber: number[] = [];
-    // public pagesNumber = [1,2,3,4,5,6,7,8,9,10]
 
     public currentPage = 1;
     
@@ -68,8 +63,8 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.selectedSetForm.valueChanges
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((data) => {
-                this.pagesNumber = [];
                 this.listSize = data.selectedSet as number;
+                this.pagesNumber = [];
                 console.log(this.listSize);
                 if (this.totalUsers) {
                     for (let i = 1; i <= this.totalUsers/this.listSize; i++) {                    
@@ -101,15 +96,11 @@ export class UsersComponent implements OnInit, OnDestroy {
                 this.isPopUpActive = condition;
                 this.cdr.detectChanges();
             })
-        this.cdr.detectChanges();
+        // this.cdr.detectChanges();
     }
 
     public goToTodos(): void {
         this.router.navigate(["todo/todos"])
-    }
-
-    public back(): void {
-        this.router.navigate(["todo/login"])
     }
 
     public showInfo(id: number): void {
