@@ -11,8 +11,6 @@ export class UserDataService{
 
     public userInfo?: FullUserInfo;
 
-    constructor(public dataStreamService: DataStreamService){
-
-    }
+    constructor(public dataStreamService: DataStreamService){}
 
 }

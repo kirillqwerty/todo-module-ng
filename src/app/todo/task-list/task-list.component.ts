@@ -20,7 +20,7 @@ export class TaskListComponent implements OnInit, OnDestroy{
     //                 gender: "male",
     //                 id: 1,
     //                 image: "https://robohash.org/hicveldicta.png",
-    //                 lastName: "Medhurst", 
+    //                 lastName: "Medhurst",
     //                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhdHVueTAiLCJlbWFpbCI6ImF0dW55MEBzb2h1LmNvbSIsImZpcnN0TmFtZSI6IlRlcnJ5IiwibGFzdE5hbWUiOiJNZWRodXJzdCIsImdlbmRlciI6Im1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vcm9ib2hhc2gub3JnL2hpY3ZlbGRpY3RhLnBuZyIsImlhdCI6MTY2MjkyMzQ4NiwiZXhwIjoxNjYyOTI3MDg2fQ.I8i9XfRyUO5aAaJUMjck-jF2LeAT5GCU3CpQX-loX6s",
     //                 username: "atuny0"};
 
@@ -46,7 +46,7 @@ export class TaskListComponent implements OnInit, OnDestroy{
         private router: Router,
         private dataService: UserDataService,
         private cdr: ChangeDetectorRef) { }
-        
+
     public getUsername(): string{
         return this.user?.username as string;
     }
@@ -56,15 +56,15 @@ export class TaskListComponent implements OnInit, OnDestroy{
 
         this.userDataStream.currentUser$
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe((data) => {this.user = data; console.log(this.user)});
+            .subscribe((data) => {
+                  this.user = data;
+            });
 
         this.todos = this.dataService.currentTodos;
 
-        console.log(this.todos);
-
         this.userDataStream.updatedTodo$
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe((data) => this.updateTask(data));  
+            .subscribe((data) => this.updateTask(data));
 
         console.log(this.isConfirmation);
         this.cdr.detectChanges();
@@ -120,11 +120,11 @@ export class TaskListComponent implements OnInit, OnDestroy{
     }
 
     public deleteTodo(): void {
-        if (this.dataService.currentTodos !== undefined && this.taskToDelete !== undefined){
+        if (this.dataService.currentTodos && this.taskToDelete){
             this.dataService.currentTodos[this.dataService.currentTodos.indexOf(this.taskToDelete)].usermade = true;
         }
         // this.isConfirmation = true;
-        if (this.taskToDelete?.id !== undefined) {
+        if (this.taskToDelete?.id) {
             this.loading = true;
             this.httpService.deleteTodo(this.taskToDelete?.id)
                 .pipe(takeUntil(this.unsubscribe$))
@@ -135,17 +135,17 @@ export class TaskListComponent implements OnInit, OnDestroy{
                             this.dataService.currentTodos?.splice(this.dataService.currentTodos.indexOf(this.taskToDelete), 1);
                         }
                         this.loading = false;
-                        this.cdr.detectChanges(); 
+                        this.cdr.detectChanges();
                     },
                     error: () => {
                         console.log("error");
-                        if (this.dataService.currentTodos !== undefined && this.taskToDelete !== undefined){
+                        if (this.dataService.currentTodos && this.taskToDelete){
                             this.dataService.currentTodos[this.dataService.currentTodos.indexOf(this.taskToDelete)].usermade = false;
                         }
                         this.loading = false;
                         this.cdr.detectChanges();
                     }
-                })    
+                })
         }
         this.isConfirmation = false;
     }

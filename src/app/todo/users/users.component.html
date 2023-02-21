@@ -1,6 +1,8 @@
 <div class="markers" [ngClass]="{background: isPopUpActive || loading}">
-    <li class="tab" (click)="goToTodos()">Todos</li>    
-    <li class="tab-current"><a class="head-label">Users</a></li>
+    <li class="tab" (click)="goToTodos()">Todos</li>
+    <li class="tab-current">
+        <a class="head-label">Users</a>
+    </li>
 </div>
 
 <div class="main-window" [ngClass]="{background: isPopUpActive || loading}">
@@ -16,7 +18,7 @@
             </tr>
         </thead>
         <tbody >
-            <tr *ngFor="let user of this.userInfo" class="user-line" (click)="showInfo(user.id)">
+            <tr *ngFor="let user of userInfo" class="user-line" (click)="showInfo(user.id)">
                 <td class="first-cell">{{user.id}}</td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
@@ -26,18 +28,19 @@
             </tr>
         </tbody>
     </table>
-    
+
     <div class="footer">
-        <div class="left-arrow-wrapper"> 
-            <a class="left-arrow" 
+        <div class="left-arrow-wrapper">
+            <a class="left-arrow"
             (click)="previousPage()"
-            [ngClass]="{left_arrow_disabled: this.currentPage === this.pagesNumber[0]}"></a>
+            [ngClass]="{left_arrow_disabled: currentPage === pagesNumber[0]}"></a>
         </div>
 
         <div class="numbers-wrapper">
-            <a class="number" *ngFor="let page of pagesNumber;" 
-            (click)="setCurrentPage(page)" 
-            [ngClass]="{number_current: page === currentPage}"
+            <a class="number"
+               *ngFor="let page of pagesNumber;"
+               (click)="setCurrentPage(page)"
+               [ngClass]="{number_current: page === currentPage}"
             >
                 {{page}}
             </a>
@@ -45,15 +48,16 @@
                 <select [formControl]="selectedSet">
                     <option *ngFor="let set of pageSet" [ngValue]="set">
                         {{set}}
-                    </option>     
+                    </option>
                 </select>
             </form>
-        </div>                
-        
-        <div class="right-arrow-wrapper"> 
-            <a class="right-arrow"
-           (click)="nextPage()"
-            [ngClass]="{right_arrow_disabled: this.currentPage === this.pagesNumber[this.pagesNumber.length - 1]}"></a>
+        </div>
+
+        <div class="right-arrow-wrapper">
+            <a
+              class="right-arrow"
+              (click)="nextPage()"
+              [ngClass]="{right_arrow_disabled: currentPage === pagesNumber[pagesNumber.length - 1]}"></a>
         </div>
     </div>
 </div>

@@ -2,10 +2,10 @@
     margin: 0 auto;
     max-height: 100%;
     width: 50%;
-    /* background: #fefefe; */
+    min-width: 800px;
     background: #e6ae6e;
     border-radius: 15px;
-    box-shadow: 0px 0px 24px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 24px 7px rgba(0, 0, 0, 0.2);
 }
 
 .head-container{
@@ -13,19 +13,17 @@
 }
 
 table{
-    /* border-collapse: collapse; */
     width: 100%;
     border: #e6ae6e;
 }
 
 th, .column-name-first, .column-name-last{
-    
     text-align: left;
     font-size: 25px;
     color: rgba(255,216,33,1);
     letter-spacing: 1px;
     -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease; 
+    transition: all 0.5s ease;
     text-shadow: 2px 2px 2px #000;
 }
 
@@ -77,22 +75,22 @@ td{
 }
 
 .number, .number_current{
-    height: auto;    
+    height: auto;
     border: none;
     display: block;
     font-size: 25px;
     color: rgba(255,216,33,1);
     -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease; 
+    transition: all 0.5s ease;
     text-shadow: 1px 1px 1px #000;
 }
-  
+
 .number:hover{
-    border: none;   
+    border: none;
     cursor: pointer;
     transition-duration: 100ms;
     font-size: 40px;
-    color: rgba(199,115,155,1); 
+    color: rgba(199,115,155,1);
 }
 
 .number:active{
@@ -106,7 +104,6 @@ td{
 }
 
 .number_current:hover{
-    /* scale: 1; */
     color: rgb(108, 108, 108);
 }
 
@@ -143,13 +140,9 @@ select:hover{
 .right-arrow, .left-arrow{
     width: 2rem;
     height: 2rem;
-    /* float: left; */
     box-shadow: -3px 3px 0 white;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    /* border-bottom-left-radius: 10px; */
-
-    /* transform: scaleY(); */
 }
 
 .right-arrow{
@@ -182,8 +175,8 @@ select:hover{
 .right_arrow_disabled:active, .left_arrow_disabled:active{
     cursor: default;
     opacity: 1;
-    padding-top: 0rem;
-    padding-right: 0rem;
+    padding-top: 0;
+    padding-right: 0;
     width: 2rem;
     height: 2rem;
     box-shadow: -4px 4px 0 #e6e6e660;
