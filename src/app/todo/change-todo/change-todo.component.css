@@ -2,7 +2,8 @@
     margin: 0 auto;
     margin-top: 5%;
     height: 400px;
-    width: 700px;
+    width: 40%;
+    min-width: 320px;
     background: #fefefe;
     border-radius: 15px;
     box-shadow: 0px 0px 24px 7px rgba(0, 0, 0, 0.2);
@@ -87,7 +88,7 @@
 }
 
 .todo-input{
-    width: 650px;
+    width: 90%;
     height: 60px;
     border-radius: 15px;
     font-size: 30px;

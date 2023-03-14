@@ -2,7 +2,7 @@
     margin: 0 auto;
     max-height: 100%;
     width: 50%;
-    min-width: 800px;
+    min-width: 360px;
     background: #e6ae6e;
     border-radius: 15px;
     box-shadow: 0 0 24px 7px rgba(0, 0, 0, 0.2);
@@ -18,8 +18,9 @@ table{
 }
 
 th, .column-name-first, .column-name-last{
+    word-break: break-all;
     text-align: left;
-    font-size: 25px;
+    font-size: 20px;
     color: rgba(255,216,33,1);
     letter-spacing: 1px;
     -webkit-transition: all 0.5s ease;
@@ -32,6 +33,7 @@ th, .column-name-first, .column-name-last{
 }
 
 .user-line{
+    min-width: 360px;
     background: #fefefe;
     height: 60px;
 }
@@ -43,10 +45,11 @@ th, .column-name-first, .column-name-last{
 }
 
 td{
+    word-break: break-all;
     border-top: 2px solid black;
     text-align: left;
     font-weight: 100;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .first-cell{

@@ -24,7 +24,7 @@ export class HttpService{
         return this.http.post<User>("api/auth/login", body);
     }
 
-    public getTodosById(id: number): Observable<TodoSettings> {     
+    public getTodosById(id: number): Observable<TodoSettings> {
         return this.http.get<TodoSettings>(`api/auth/todos/user/${id}`, { withCredentials: true });
     }
 
@@ -58,6 +58,4 @@ export class HttpService{
     public deleteTodo(taskId: number): Observable<Todo>{
         return this.http.delete<Todo>(`api/auth/todos/${taskId}`, { withCredentials: true });
     }
-
-    // public getUserImage(name: string): 
 }

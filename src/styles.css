@@ -3,14 +3,16 @@ body{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     background: linear-gradient(90deg, rgba(255,216,33,1) 0%, rgba(199,115,155,1) 100%);
-    user-select: none;  
+    user-select: none;
 }
 
 .markers{
+  width: 20%;
+  min-width: 320px;
   margin: 0 auto;
   margin-top: 5%;
   height: 100px;
-  width: 400px;
+  /*width: 400px;*/
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   display: flex;
@@ -23,8 +25,8 @@ body{
   /* backdrop-filter: blur(10px); */
   pointer-events: none;
   animation: 0.3s blurScale;
-  filter: blur(5px); 
-  
+  filter: blur(5px);
+
 }
 
 @keyframes blurScale {
@@ -82,28 +84,28 @@ body{
   color: rgba(255,216,33,1);
   letter-spacing: 1px;
   -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease; 
+  transition: all 0.5s ease;
   text-shadow: 2px 2px 2px #000;
 }
 
 .head-label:hover{
-  color: rgba(199,115,155,1); 
+  color: rgba(199,115,155,1);
 }
 
 .loader {
   --b: 20px;  /* border thickness */
-  --n: 20;   
+  --n: 20;
   --g: 10deg;
-  --c: rgba(255,216,33,1);   
-  
+  --c: rgba(255,216,33,1);
+
   position: fixed;
   top: 50%;
   left: 50%;
   width: 100px;
-  margin: -50px 0 0 -50px; 
+  margin: -50px 0 0 -50px;
   aspect-ratio: 1;
   border-radius: 50%;
-  padding: 1px; 
+  padding: 1px;
   background: conic-gradient(rgba(199,115,155,1)0,var(--c)) content-box;
   --_m:
     repeating-conic-gradient(rgba(199,115,155,1) 0deg,
